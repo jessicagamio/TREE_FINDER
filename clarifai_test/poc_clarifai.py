@@ -6,6 +6,8 @@ import json
 from pprint import pprint
 
 CLARIFAI_TOKEN= os.environ.get('CLARIFAI_TOKEN')
+print(CLARIFAI_TOKEN)
+print(CLARIFAI_TOKEN)
 app = ClarifaiApp(api_key=CLARIFAI_TOKEN)
 
 
