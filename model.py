@@ -12,11 +12,9 @@ class Tree(db.Model):
     sci_name = db.Column(db.String(), nullable = False)
     common_name = db.Column(db.String(), nullable = False)
     # factoid = db.Column (db.String(), nullable= False)
-    # single_leaf = db.Column (db.Boolean, nullable = False)
-    # compound_leaf = db.Column(db.Boolean, nullable = False)
     # margin = db.Column(db.String(), nullable = False) 
-    # lobed = db.Column(db.Boolean, nullable = False)
     # venation = db.Column(db.String(), nullable = True)
+    # image = db. Column(db.String(), nullable = False)
     
     def __repr__(self):
         """show leaf name and main categories"""
