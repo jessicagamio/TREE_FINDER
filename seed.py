@@ -22,7 +22,7 @@ entries = tree_info['data'].__len__()
 TREE_LIST = []
 i=0
 
-while i < entries:
+for i in range(entries):
 
     tree_type =tree_info['data'][i][10]
 
@@ -35,13 +35,13 @@ while i < entries:
     longitude = tree_info['data'][i][24] 
 
     # print(latitude, longitude)
-    if latitude == None or longitude == None:
+    if tree_type == 'Tree(s) ::' or latitude == None or longitude == None or scientific_name not in ['Platanus x hispanica','Magnolia grandiflora','Prunus cerasifera','Tristaniopsis laurina',"Ficus microcarpa nitida 'Green Gem'"]:
         # print('detected a none', latitude, longitude)
-        pass
+        continue
         
-    if tree_type == 'Tree(s) ::' or scientific_name not in ['Platanus x hispanica','Magnolia grandiflora','Prunus cerasifera','Tristaniopsis laurina',"Ficus microcarpa nitida 'Green Gem'"]:
-        print('not test tree ===>',scientific_name)
-        pass
+    # if tree_type == 'Tree(s) ::' or scientific_name not in ['Platanus x hispanica','Magnolia grandiflora','Prunus cerasifera','Tristaniopsis laurina',"Ficus microcarpa nitida 'Green Gem'"]:
+    #     print('not test tree ===>',scientific_name)
+    #     continue
 
     else:
         print('test tree', scientific_name, 'lat', latitude, 'lon', longitude)
@@ -93,7 +93,7 @@ while i < entries:
 
             db.session.add(species, tree)
 
-    i+=1
+    # i+=1
 
 db.session.commit()
 
