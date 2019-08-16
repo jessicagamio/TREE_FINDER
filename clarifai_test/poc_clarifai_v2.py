@@ -5,7 +5,7 @@ import json
 from pprint import pprint
 
 # CLARIFAI_TOKEN= os.environ.get('CLARIFAI_TOKEN')
-app = ClarifaiApp(api_key='d03d749bc6ad4512ad017bce4dff2085')
+app = ClarifaiApp(api_key=CLARIFAI_TOKEN)
 
 
 # create empty image lists
