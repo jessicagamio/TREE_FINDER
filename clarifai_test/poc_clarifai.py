@@ -33,11 +33,11 @@ def train_images():
         app.inputs.bulk_create_images(test_images[i])
 
 def make_prediction(user_picture, trees=['platanus','magnolia','prunus','tristan','ficus']):
-    """make prediction """
+    """make prediction with user picture """
 
     train_images()
     # Create model and add chosen concepts to model
-    model=app.models.create('detect_tree', concepts = trees)
+    model=app.models.create('model_id_1', model_name='detect_tree', concepts=trees)
 
     # train the model
     model.train()
@@ -48,6 +48,8 @@ def make_prediction(user_picture, trees=['platanus','magnolia','prunus','tristan
     prediction = model.predict_by_filename('img/test_leaf/{user_picture}')
 
     # delete model
-        #add code here#
+    app.models.delete('model_id_1')
+
+    return prediction
  
 
