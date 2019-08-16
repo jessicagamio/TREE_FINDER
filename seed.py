@@ -38,7 +38,7 @@ def create_species():
     shape = 'obtuse'
     margin = 'entire'
     venation = 'pinnate'
-    factoid = 'facts'
+    factoid = 'Evergreen. Produces long lasting white, fagrant flowers.'
     image = 'an_image'
     Magnolia_grandiflora = TreeSpecies(sci_name=scientific_name, 
                 common_name=common_name,
@@ -53,12 +53,12 @@ def create_species():
 
 
     scientific_name = 'Prunus cerasifera'
-    common_name = 'cherry plum'
+    common_name = 'Purple-Leaf Plum'
     shape = 'obtuse'
     margin = 'serrated'
-    venation = 'venation'
-    factoid = 'facts'
-    image = 'an_image'
+    venation = 'Cross Venulate'
+    factoid = 'Blooms favorite flowers in the spring. Attract bees.'
+    image = '/static/img/purple_leaf_plum.jpg'
     Prunus_cerasifera = TreeSpecies(sci_name=scientific_name, 
                 common_name=common_name,
                 shape=shape, 
@@ -73,10 +73,10 @@ def create_species():
 
     scientific_name = 'Tristaniopsis laurina'
     common_name = 'common name'
-    shape = 'obtuse'
+    shape = 'linear'
     margin = 'entire'
-    venation = 'venation'
-    factoid = 'facts'
+    venation = 'pinnate'
+    factoid = 'Originates from Australia. Disease and pest resistant.'
     image = 'an_image'
     Tristaniopsis_laurina = TreeSpecies(sci_name=scientific_name, 
                 common_name=common_name,
@@ -95,7 +95,7 @@ def create_species():
     shape = 'obtuse'
     margin = 'entire'
     venation = 'pinnate'
-    factoid = 'facts'
+    factoid = 'Evergreen. Common shade tree.'
     image = 'an_image'
     Ficus_microcarpa_nitida = TreeSpecies(sci_name=scientific_name, 
                 common_name=common_name,
@@ -112,6 +112,7 @@ def create_species():
 
 def create_trees(tree_species):
     """create trees table"""
+    
     TREE_DATA = "trees_sf/rows.json"
 
     trees_json = open(TREE_DATA).read()
