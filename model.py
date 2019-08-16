@@ -12,12 +12,13 @@ class TreeSpecies(db.Model):
     tree_species_id = db.Column(db.Integer,
                                 primary_key=True,
                                 autoincrement=True)
-    sci_name = db.Column(db.String, nullable = False)
-    common_name = db.Column(db.String, nullable = False)
-    factoid = db.Column (db.String, nullable= False)
-    margin = db.Column(db.String, nullable = False) 
-    venation = db.Column(db.String, nullable = True)
-    image = db. Column(db.String, nullable = False)
+    sci_name = db.Column(db.String, nullable=False)
+    shape = db.Column(db.String, nullable=False)
+    common_name = db.Column(db.String, nullable=False)
+    factoid = db.Column (db.String, nullable=False)
+    margin = db.Column(db.String, nullable=False) 
+    venation = db.Column(db.String, nullable=True)
+    image = db. Column(db.String, nullable=False)
     
     def __repr__(self):
         """show leaf name and main categories"""
@@ -33,8 +34,8 @@ class Tree(db.Model):
     tree_id = db.Column(db.Integer,
                         primary_key=True,
                         autoincrement=True)
-    lat = db.Column(db.Float, nullable = False)
-    lon = db.Column(db.Float, nullable = False)
+    lat = db.Column(db.Float, nullable=False)
+    lon = db.Column(db.Float, nullable=False)
     tree_species_id = db.Column(db.Integer,
                                 db.ForeignKey('tree_species.tree_species_id'))
 
