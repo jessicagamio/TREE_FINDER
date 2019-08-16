@@ -1,9 +1,8 @@
+
 from sqlalchemy import func
 from model import TreeSpecies,Tree,connect_to_db, db
 from server import app
-
 import json
-from pprint import pprint
 
 TREE_DATA = "trees_sf/rows.json"
 
@@ -71,9 +70,8 @@ while i < entries:
         factoid = 'facts'
         image = 'an_image'
 
-    i+=1
-
     if scientific_name == 'Platanus x hispanica' or scientific_name=='Magnolia grandiflora' or scientific_name=='Prunus cerasifera' or scientific_name=='Tristaniopsis laurina' or scientific_name=="Ficus microcarpa nitida 'Green Gem'": 
+        print(scientific_name)       
         species = TreeSpecies(sci_name=scientific_name, 
             common_name=common_name,
             shape=shape, 
@@ -86,11 +84,12 @@ while i < entries:
 
         db.session.add(species, tree)
 
-        db.session.commit()
+    i+=1
+
+db.session.commit()
 
 if __name__ == "__main__":
     connect_to_db(app)
-
-    # In case tables haven't been created, create them
     db.create_all()
+
 

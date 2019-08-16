@@ -61,7 +61,8 @@ def connect_to_db(app):
 
 
 if __name__ == '__main__':
-    from flask import Flask
-    app = Flask(__name__)
+    # from flask import Flask
+    # app = Flask(__name__)
 
+    from server import app
     connect_to_db(app)
