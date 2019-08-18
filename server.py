@@ -5,6 +5,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, Tree, TreeSpecies
 
+from obj_detect import predict_model
 
 app = Flask(__name__)
 
@@ -22,6 +23,9 @@ def index():
 @app.route('/get_pic')
 def process_picture():
     """process picture with clarifai"""
+    
+    user_image = request.args.get('user_pic')
+
     return None
 
 
