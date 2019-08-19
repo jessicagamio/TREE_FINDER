@@ -18,8 +18,8 @@ def create_concepts(tree):
     # Create Concept for tree_species
     images=[]
 
-    for file in os.listdir('img/{tree}'):
-       img=ClImage( filename=f'img/platanus/{file}', concepts=['{tree}'])
+    for file in os.listdir('status/img/{tree}'):
+       img=ClImage( filename=f'status/img/{tree}/{file}', concepts=['{tree}'])
        images.append(img)
 
     app.inputs.bulk_create_images(images)
@@ -28,7 +28,7 @@ def create_concepts(tree):
 def create_model():
     """Create Model"""
 
-    Create model and add chosen concepts to model
+    #Create model and add chosen concepts to model
     model=app.models.create('model_id_1', model_name='detect_tree', concepts=['platanus', 'prunus','magnolia'])
 
     # train the model
