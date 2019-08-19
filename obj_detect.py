@@ -53,7 +53,22 @@ def predict_model(user_image):
     for predict in prediction['outputs']:
         result= predict['data']['concepts']
 
-    tree_prediction = [(answer['name'], answer['value']) for answer in result]
+
+    tree_prediction=[]  # create empty list of predictions
+
+    for answer in result:   
+        name = answer['name']
+        value = answer['value']
+
+        if value < .1:  # if value is less than 10 percent exclude
+            continue
+        else:   # predictions 10 percent or over
+            value = (answer['value']) * 100
+            value = round(value)
+            tree_prediction.append((name,value))    
+
+    # send back tree predictions that in Descending order that are above 10%
+    tree_prediction = sorted(tree_prediction, key= lambda x:x[1], reverse=True)
 
     return tree_prediction
 
