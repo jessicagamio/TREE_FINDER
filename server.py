@@ -21,6 +21,30 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+def tree_facts(results):
+    """Query Tree species information"""
+    tree_dict={
+                'platanus':'Platanus x hispanica',
+                'prunus': 'Prunus cerasifera',
+                'magnolia':'Magnolia grandiflora'
+                }
+
+    name, value = results[0]
+    sci_name = tree_dict[name]
+
+    tree = TreeSpecies.query.filter(sci_name==sci_name).first()
+
+    facts = (tree.sci_name,
+            tree.common_name,
+            tree.shape,
+            tree.factoid,
+            tree.margin,
+            tree.venation, 
+            tree.image)
+    
+    return facts
+
+
 @app.route('/')
 def index():
     """Homepage"""
@@ -50,8 +74,10 @@ def upload_image():
         
     results = predict_model(path)
 
+    facts = tree_facts(results)
+    print('================>>>>>>>>>',facts)
 
-    return render_template("prediction.html", results = results)
+    return render_template("prediction.html", results = results, facts=facts)
 
 
 if __name__ == "__main__":
