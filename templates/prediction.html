@@ -2,11 +2,24 @@
 
 
 {% block content %}
-
+<h1>Your results: </h1>
 <div>
-Your tree is 
-{% for result in results%}
-    <li>{result}</li>>
+    {% for tree, num in results %}
+    There is a {{num}} % chance
+    {% endfor %}
+</div>
+<div>
+
+    {% for sci_name, common_name, shape, factoid, margin, venation, image in facts %}
+    Scientific Name: {{sci_name}}<br>
+    Common Name: {{common_name}}<br>
+    Leaf Shape: {{shape}}<br>
+    Leaf Margin: {{margin}}<br>
+    Leaf Venation: {{venation}}<br>
+    Facts: {{factoid}}<br>
+    <img src="{{image}}">
+    {% endfor %}
+
 </div>
 
 {% endblock %}
