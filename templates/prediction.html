@@ -3,14 +3,14 @@
 
 {% block content %}
 <h1>Your results: </h1>
+{% if value %}
 <div>
-    {% for tree, num in results %}
-    There is a {{num}} % chance
-    {% endfor %}
+    There is a a {{value}}% chance that you found a {{common_name}}!
+
 </div>
 <div>
-
-    {% for sci_name, common_name, shape, factoid, margin, venation, image in facts %}
+    <h2>Facts</h2>
+    <p>
     Scientific Name: {{sci_name}}<br>
     Common Name: {{common_name}}<br>
     Leaf Shape: {{shape}}<br>
@@ -18,8 +18,19 @@
     Leaf Venation: {{venation}}<br>
     Facts: {{factoid}}<br>
     <img src="{{image}}">
-    {% endfor %}
+    </p>
 
 </div>
+
+<div>
+    <h1>Find {{common_name}}'s in your area !</h1>
+</div>
+{% endif %}
+
+{% if value == False %}
+<div>
+    No significant match found. Try again!
+</div>
+{% endif %}
 
 {% endblock %}
