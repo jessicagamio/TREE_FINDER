@@ -74,10 +74,19 @@ def upload_image():
         
     results = predict_model(path)
 
-    facts = tree_facts(results)
-    print('================>>>>>>>>>',facts)
+    name,value = results[0]
 
-    return render_template("prediction.html", results = results, facts=facts)
+    sci_name, common_name, shape, factoid, margin, venation, image = tree_facts(results)
+
+    return render_template("prediction.html", 
+                            value= value,
+                            sci_name=sci_name,
+                            common_name=common_name,
+                            shape= shape,
+                            factoid=factoid,
+                            margin=margin,
+                            venation=venation,
+                            image=image )
 
 
 if __name__ == "__main__":
