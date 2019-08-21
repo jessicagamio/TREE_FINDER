@@ -62,7 +62,7 @@ def predict_model(user_image):
 
         if value < .1:  # if value is less than 10 percent exclude
             continue
-        else:   # predictions 10 percent or over
+        else:   # includes predictions 10 percent or over
             value = (answer['value']) * 100
             value = round(value)
             tree_prediction.append((name,value))    

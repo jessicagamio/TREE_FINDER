@@ -5,14 +5,40 @@ from flask_debugtoolbar import DebugToolbarExtension
 from werkzeug.utils import secure_filename
 from model import connect_to_db, db, Tree, TreeSpecies
 from obj_detect import predict_model
+from data import tree_facts
 
 UPLOAD_FOLDER = '/uploads' # location of uploaded images
 ALLOWED_EXTENSIONS = {'jpg','png','jpeg'}
 
 app = Flask(__name__)
-app.secret_key="ABC"
+FLASK_TOKEN = os.environ.get('FLASK_TOKEN')
+app.secret_key=FLASK_TOKEN
 app.jinja_env.undefined = StrictUndefined
 app.config['UPLOAD_FOLDER'] = '/home/vagrant/src/TREE_FINDER/static/img/uploads'
+
+# def tree_facts(name):
+#     """Query Tree species information"""
+#     tree_dict={
+#                 'platanus':'Platanus x hispanica',
+#                 'prunus': 'Prunus cerasifera',
+#                 'magnolia':'Magnolia grandiflora'
+#                 }
+
+#     sci_name = tree_dict[name]
+#     print('++++++++__name__++++++++++++',name)
+#     print('++++++++__sci_name__++++++++++++',sci_name)
+
+#     tree = TreeSpecies.query.filter(TreeSpecies.sci_name==sci_name).first()
+
+#     facts = (tree.sci_name,
+#             tree.common_name,
+#             tree.shape,
+#             tree.factoid,
+#             tree.margin,
+#             tree.venation, 
+#             tree.image)
+#     print('xxxxxxxxxxx__facts__xxxxxxxxxxxxxxx',facts)
+#     return facts
 
 
 def allowed_file(filename):
@@ -20,29 +46,6 @@ def allowed_file(filename):
 
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def tree_facts(results):
-    """Query Tree species information"""
-    tree_dict={
-                'platanus':'Platanus x hispanica',
-                'prunus': 'Prunus cerasifera',
-                'magnolia':'Magnolia grandiflora'
-                }
-
-    name, value = results[0]
-    sci_name = tree_dict[name]
-
-    tree = TreeSpecies.query.filter(sci_name==sci_name).first()
-
-    facts = (tree.sci_name,
-            tree.common_name,
-            tree.shape,
-            tree.factoid,
-            tree.margin,
-            tree.venation, 
-            tree.image)
-    
-    return facts
 
 
 @app.route('/')
@@ -65,28 +68,39 @@ def upload_image():
         image = request.files['upload']
 
         if image.filename == '':
-            flash('No selected file')
-            return redirect(reqest.url)
+            flash('No File Selected')
+            return redirect('/')
+
         if image and allowed_file(image.filename):
             filename=secure_filename(image.filename)
             image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
             path = os.path.join(app.config["UPLOAD_FOLDER"], image.filename)
         
-    results = predict_model(path)
+    results = predict_model(path) # predict tree from uploaded image in clarifai
 
-    name,value = results[0]
+    print('=======>', results)
+    
 
-    sci_name, common_name, shape, factoid, margin, venation, image = tree_facts(results)
+    if results == []:
+        value = 0
+        return render_template("prediction.html", value=value)
 
-    return render_template("prediction.html", 
-                            value= value,
-                            sci_name=sci_name,
-                            common_name=common_name,
-                            shape= shape,
-                            factoid=factoid,
-                            margin=margin,
-                            venation=venation,
-                            image=image )
+    #if results are not empty do th follwoing
+    
+    elif results:
+        name,value = results[0] # unpack the concept with the highest value from clarifai
+
+        sci_name, common_name, shape, factoid, margin, venation, image = tree_facts(name) 
+
+        return render_template("prediction.html", 
+                                value= value,
+                                sci_name=sci_name,
+                                common_name=common_name,
+                                shape= shape,
+                                factoid=factoid,
+                                margin=margin,
+                                venation=venation,
+                                image=image )
 
 
 if __name__ == "__main__":
