@@ -2,8 +2,10 @@
 
 
 {% block content %}
+
 <h1>Your results: </h1>
-{% if value %}
+
+{% if value != 0 %}
 <div>
     There is a a {{value}}% chance that you found a {{common_name}}!
 
@@ -27,7 +29,9 @@
 </div>
 {% endif %}
 
-{% if value == False %}
+
+
+{% if value == 0 %}
 <div>
     No significant match found. Try again!
 </div>
