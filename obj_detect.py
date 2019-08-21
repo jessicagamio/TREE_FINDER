@@ -8,18 +8,17 @@ CLARIFAI_TOKEN= os.environ.get('CLARIFAI_TOKEN')
 app = ClarifaiApp(api_key=CLARIFAI_TOKEN)
 
 
-
 # app.concepts.update(concept_id='serrated_abst', concept_name='concepts')
 # app.concepts.update(concept_id='smooth_abst', concept_name='concepts')
 
 def create_concepts(tree):
     """Create concepts for each tree species"""
-
+    tree = tree
     # Create Concept for tree_species
     images=[]
 
-    for file in os.listdir('status/img/{tree}'):
-       img=ClImage( filename=f'status/img/{tree}/{file}', concepts=['{tree}'])
+    for file in os.listdir(f'static/img/{tree}'):
+       img=ClImage( filename=f'static/img/{tree}/{file}', concepts=[tree])
        images.append(img)
 
     app.inputs.bulk_create_images(images)
@@ -48,10 +47,17 @@ def predict_model(user_image):
     """
 
     model = app.models.get('detect_tree')
-    prediction = model.predict_by_filename(user_image)
 
+    print('model===============>', model)
+    print('===========>',type(user_image), user_image)
+
+    prediction = model.predict_by_filename(user_image)
+    
+    print('=====prediction===>', prediction)
+    print()
+    
     for predict in prediction['outputs']:
-        result= predict['data']['concepts']
+        result = predict['data']['concepts']
 
 
     tree_prediction=[]  # create empty list of predictions
@@ -71,8 +77,6 @@ def predict_model(user_image):
     tree_prediction = sorted(tree_prediction, key= lambda x:x[1], reverse=True)
 
     return tree_prediction
-
-
 
 
 
