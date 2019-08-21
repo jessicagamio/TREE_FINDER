@@ -4,14 +4,17 @@
 {% block content %}
 
 {% for messages in get_flashed_messages() %}
-     {{messages}}
+    
+<div class="alert alert-primary" role="alert">
+   {{messages}}
+</div>
 
 {% endfor %}
 
 
 
 <div>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
+    <form id="image-form" action="/upload" method="POST" enctype="multipart/form-data">
         <label>Find that tree! 
             <input type="file" name="upload" accept="image/*" >
         </label>
@@ -20,19 +23,30 @@
     </form>
 </div>
 
-<script>
-   const button = document.querySelector('#img_submit');
 
-   function wheelMaker(evt){
-    <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>
-    evt.preventDefault();
+{#
+<script>
+   const imageForm = document.querySelector('#image-form');
+   const fileInput = document.querySelector('input[name="upload"]');
+
+   function popUpAlert(evt){
+      $.ajax({
+        type: 'POST',
+        url: '/upload',
+        data: {
+          'upload': fileInput.files[0]
+        },
+        contentType: 'multipart/form-data', // set accordingly
+        processData: false
+      }, alert);
+      evt.preventDefault();
    }
 
-   button.addEventListener('img_submit', wheelMaker)
+   imageForm.addEventListener('submit', popUpAlert);
     
+  
 
 </script>
+#}
 
 {% endblock %}
