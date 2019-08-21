@@ -14,6 +14,7 @@ app = Flask(__name__)
 FLASK_TOKEN = os.environ.get('FLASK_TOKEN')
 app.secret_key=FLASK_TOKEN
 app.jinja_env.undefined = StrictUndefined
+# app.config['UPLOAD_FOLDER'] = 'static/img/uploads'
 app.config['UPLOAD_FOLDER'] = '/home/vagrant/src/TREE_FINDER/static/img/uploads'
 
 # def tree_facts(name):
@@ -55,52 +56,52 @@ def index():
     return render_template("homepage.html")
 
 
-@app.route('/upload', methods=['GET','POST'])
+@app.route('/upload', methods=['POST'])
 def upload_image():
     """upload image from site"""
 
-    if request.method == 'POST':
+    if 'upload' not in request.files:
+        flash('No file part')
+        return redirect('/')
 
-        if 'upload' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-     
-        image = request.files['upload']
+    image = request.files['upload']
 
-        if image.filename == '':
-            flash('No File Selected')
-            return redirect('/')
+    if image.filename == '':
+        flash('No File Selected')
+        return redirect('/')
 
-        if image and allowed_file(image.filename):
-            filename=secure_filename(image.filename)
-            image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
-            path = os.path.join(app.config["UPLOAD_FOLDER"], image.filename)
+    if image and allowed_file(image.filename):
+        filename=secure_filename(image.filename)
+        image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
+        path = os.path.join(app.config["UPLOAD_FOLDER"], image.filename)
+            
+        results = predict_model(path) # predict tree from uploaded image in clarifai
+
+        print('=======>', results)
         
-    results = predict_model(path) # predict tree from uploaded image in clarifai
 
-    print('=======>', results)
-    
+        if results == []:
+            value = 0
+            return render_template("prediction.html", value=value)
 
-    if results == []:
-        value = 0
-        return render_template("prediction.html", value=value)
+        #if results are not empty do th follwoing
+        
+        elif results:
+            name,value = results[0] # unpack the concept with the highest value from clarifai
 
-    #if results are not empty do th follwoing
-    
-    elif results:
-        name,value = results[0] # unpack the concept with the highest value from clarifai
+            sci_name, common_name, shape, factoid, margin, venation, image = tree_facts(name) 
 
-        sci_name, common_name, shape, factoid, margin, venation, image = tree_facts(name) 
-
-        return render_template("prediction.html", 
-                                value= value,
-                                sci_name=sci_name,
-                                common_name=common_name,
-                                shape= shape,
-                                factoid=factoid,
-                                margin=margin,
-                                venation=venation,
-                                image=image )
+            return render_template("prediction.html", 
+                                    value= value,
+                                    sci_name=sci_name,
+                                    common_name=common_name,
+                                    shape= shape,
+                                    factoid=factoid,
+                                    margin=margin,
+                                    venation=venation,
+                                    image=image )
+        flash('something weird happened ')
+        redirect('/')
 
 
 if __name__ == "__main__":
