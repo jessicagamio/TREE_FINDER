@@ -15,7 +15,7 @@ def create_species():
 
     # Create TreeSpecies
     scientific_name = 'Platanus x hispanica'
-    common_name = 'Sycarmore'
+    common_name = 'London Plane'
     shape = 'palmate'
     margin = 'entire'
     venation = 'pinnate'
@@ -38,8 +38,8 @@ def create_species():
     shape = 'obtuse'
     margin = 'entire'
     venation = 'pinnate'
-    factoid = 'Evergreen. Produces long lasting white, fagrant flowers.'
-    image = 'an_image'
+    factoid = 'Evergreen. Produces long lasting white, fragrant flowers.'
+    image = '/static/img/magnolia_grandiflora.jpg'
     Magnolia_grandiflora = TreeSpecies(sci_name=scientific_name, 
                 common_name=common_name,
                 shape=shape, 
@@ -57,7 +57,7 @@ def create_species():
     shape = 'obtuse'
     margin = 'serrated'
     venation = 'Cross Venulate'
-    factoid = 'Blooms favorite flowers in the spring. Attract bees.'
+    factoid = 'Blooms favorite flowers in the spring. Attracts bees.'
     image = '/static/img/purple_leaf_plum.jpg'
     Prunus_cerasifera = TreeSpecies(sci_name=scientific_name, 
                 common_name=common_name,
@@ -73,11 +73,11 @@ def create_species():
 
     scientific_name = 'Tristaniopsis laurina'
     common_name = 'common name'
-    shape = 'linear'
+    shape = 'lanceolate'
     margin = 'entire'
     venation = 'pinnate'
     factoid = 'Originates from Australia. Disease and pest resistant.'
-    image = 'an_image'
+    image = '/static/img/tristaniopsis.jpg'
     Tristaniopsis_laurina = TreeSpecies(sci_name=scientific_name, 
                 common_name=common_name,
                 shape=shape, 
@@ -90,13 +90,13 @@ def create_species():
     tree_species[scientific_name]=Tristaniopsis_laurina
 
             
-    scientific_name = "Ficus microcarpa nitida 'Green Gem'"
-    common_name= 'common_name'
-    shape = 'obtuse'
+    scientific_name = 'Ginkgo biloba'
+    common_name= 'Maidenhair Tree'
+    shape = 'flabellate'
     margin = 'entire'
-    venation = 'pinnate'
-    factoid = 'Evergreen. Common shade tree.'
-    image = 'an_image'
+    venation = 'parallel'
+    factoid = 'Can live as long as 3000 years. Leaves turn yellow in the fall.'
+    image = '/static/img/gingko.jpg'
     Ficus_microcarpa_nitida = TreeSpecies(sci_name=scientific_name, 
                 common_name=common_name,
                 shape=shape, 
