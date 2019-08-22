@@ -16,12 +16,15 @@
 <div>
     <form id="image-form" action="/upload" method="POST" enctype="multipart/form-data">
         <label>Find that tree! 
-            <input type="file" name="upload" accept="image/*" >
+            <input type="file" name="upload" accept="image/*"  id="file_input">
         </label>
         <br>
         <input type='submit' value='submit' id='img_submit'>
     </form>
 </div>
+
+
+<div id="target"> Drag an image file here.</div>
 
 
 {#

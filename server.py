@@ -70,6 +70,10 @@ def upload_image():
         flash('No File Selected')
         return redirect('/')
 
+    if not allowed_file(image.filename):
+        flash ('Must be a jpg or png file.')
+        return redirect('/')
+
     if image and allowed_file(image.filename):
         filename=secure_filename(image.filename)
         image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
@@ -79,7 +83,8 @@ def upload_image():
 
         print('=======>', results)
         
-
+        os.remove(path)
+        
         if results == []:
             value = 0
             return render_template("prediction.html", value=value)
@@ -100,6 +105,8 @@ def upload_image():
                                     margin=margin,
                                     venation=venation,
                                     image=image )
+        
+
         flash('something weird happened ')
         redirect('/')
 
