@@ -133,7 +133,7 @@ def create_trees(tree_species):
         latitude = tree_info['data'][i][23]
         longitude = tree_info['data'][i][24] 
 
-        if latitude == None or longitude == None or scientific_name not in ['Platanus x hispanica','Magnolia grandiflora','Prunus cerasifera','Tristaniopsis laurina',"Ficus microcarpa nitida 'Green Gem'"]:
+        if latitude == None or longitude == None or scientific_name not in ['Platanus x hispanica','Magnolia grandiflora','Prunus cerasifera','Tristaniopsis laurina','Ginkgo biloba']:
             continue
 
         tree = Tree(lat= float(latitude), lon= float(longitude), tree_species= tree_species[scientific_name])

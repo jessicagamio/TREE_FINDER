@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 
 {% for messages in get_flashed_messages() %}
@@ -12,44 +11,46 @@
 {% endfor %}
 
 
-
-<div>
-    <form id="image-form" action="/upload" method="POST" enctype="multipart/form-data">
-        <label>Find that tree! 
-            <input type="file" name="upload" accept="image/*"  id="file_input">
-        </label>
-        <br>
-        <input type='submit' value='submit' id='img_submit'>
-    </form>
+<div id="spin" style="display:none">
+  Processing Image....
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
 
 
-<div id="target"> Drag an image file here.</div>
+<div>
+    <form id="image-form" action="/upload" method="POST" enctype="multipart/form-data">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile"  name="upload" accept="image/*" >
+        <label class="custom-file-label" for="customFile" id="diplayfile">Choose file</label>
+         <br>
+        <input type='submit' value='submit' id='img_submit'>
+      </div>
+    </form>
+</div>
 
-
-{#
 <script>
-   const imageForm = document.querySelector('#image-form');
-   const fileInput = document.querySelector('input[name="upload"]');
+  const button= document.querySelector('#img_submit');
 
-   function popUpAlert(evt){
-      $.ajax({
-        type: 'POST',
-        url: '/upload',
-        data: {
-          'upload': fileInput.files[0]
-        },
-        contentType: 'multipart/form-data', // set accordingly
-        processData: false
-      }, alert);
-      evt.preventDefault();
-   }
+  function showSpinener(){
+    const spinner = document.querySelector('#spin');
+    spinner.style.display= '';
+  }
 
-   imageForm.addEventListener('submit', popUpAlert);
-    
-  
-
+  button.addEventListener('click', showSpinner);
 </script>
-#}
+
+<script>
+
+  const displayFile=document.querySelector('#displayfile');
+  const chosenFile=document.querySelector('#customFile');
+
+  function displayFile(){
+    displayfile.html(file_name)
+  }
+
+  </script>
+
 
 {% endblock %}

@@ -17,30 +17,6 @@ app.jinja_env.undefined = StrictUndefined
 # app.config['UPLOAD_FOLDER'] = 'static/img/uploads'
 app.config['UPLOAD_FOLDER'] = '/home/vagrant/src/TREE_FINDER/static/img/uploads'
 
-# def tree_facts(name):
-#     """Query Tree species information"""
-#     tree_dict={
-#                 'platanus':'Platanus x hispanica',
-#                 'prunus': 'Prunus cerasifera',
-#                 'magnolia':'Magnolia grandiflora'
-#                 }
-
-#     sci_name = tree_dict[name]
-#     print('++++++++__name__++++++++++++',name)
-#     print('++++++++__sci_name__++++++++++++',sci_name)
-
-#     tree = TreeSpecies.query.filter(TreeSpecies.sci_name==sci_name).first()
-
-#     facts = (tree.sci_name,
-#             tree.common_name,
-#             tree.shape,
-#             tree.factoid,
-#             tree.margin,
-#             tree.venation, 
-#             tree.image)
-#     print('xxxxxxxxxxx__facts__xxxxxxxxxxxxxxx',facts)
-#     return facts
-
 
 def allowed_file(filename):
     """checks if extension is valid"""
