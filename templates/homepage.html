@@ -7,12 +7,16 @@
 <div class="alert alert-primary" role="alert">
    {{messages}}
 </div>
-
 {% endfor %}
+
+<div id="flash" style="display:none">
+  <div class="alert alert-primary" role="alert">
+  No file selected 
+  </div>
+</div>
 
 
 <div id="spin" style="display:none">
-Processing Image....
   <div class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
   </div>
@@ -23,17 +27,39 @@ Processing Image....
     <form id="image-form" action="/upload" method="POST" enctype="multipart/form-data">
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="customFile"  name="upload" accept="image/*" >
-        <label class="custom-file-label" for="customFile" id="diplayfile">Choose file</label>
+       <label class="custom-file-label" for="customFile" id="displayfile">Choose file</label>
          <br>
-        <input type='submit' value='submit' id='img_submit'>
+        <input type='submit' value='Submit' id='img_submit'>
       </div>
     </form>
 </div>
 
+<!-- <script>
+
+let imageForm=document.querySelector('#image-form');
+
+function message(){
+  flash=document.querySelector('#flash');
+  if( filename!=true){
+    flash.style.display='';
+  }
+}
+
+function formInputs(evt){
+  evt.preventDefault();
+  const filename = document.getElementById('customFile').files[0].name;
+  
+  $.post('/upload', filename, message);
+}
+
+$('#image-form').on('submit', formInputs);
+
+</script> -->
+
 <script>
   const button= document.querySelector('#img_submit');
 
-  function showSpinener(){
+  function showSpinner(){
     const spinner = document.querySelector('#spin');
     spinner.style.display= '';
   }
@@ -42,13 +68,14 @@ Processing Image....
 </script>
 
 <script>
-# i want to change the value of CHoose file after the files been selected
 
-# assign a variable to the input value after file has been selected
+customFile=document.querySelector('#customFile');
 
-# 
+customFile.addEventListener('change',()=>{
+  var filename = document.getElementById('customFile').files[0].name;
+  $('#displayfile').html(filename);
+})
 
-  
 </script>
 
 
