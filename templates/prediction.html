@@ -3,7 +3,8 @@
 
 {% block content %}
 
-<h1>Your results: </h1>
+
+<h1 class="title">Your results: </h1>
 
 {% if value != 0 %}
 <div>
@@ -24,9 +25,30 @@
 
 </div>
 
-<div>
-    <h1>Find {{common_name}}'s in your area !</h1>
-</div>
+<h1>Find {{common_name}}'s in your area !</h1>
+<div id="map"></div>
+
+<script>
+    function initMap(){
+        const sfBayCoords={lat: 37.7809825, lng:-122.444124};
+
+        const map = new google.maps.Map(document.getElementById('map'),{
+                center: sfBayCoords,
+                zoom:12
+        });
+
+        let markerList=[{lat: 37.7809825, lng:-122.444124},{lat: 37.7906331, lng:-122.4041874}];
+
+        for (let mark of markerList){
+            let marker = new google.maps.Marker({ position:mark, map:map });
+        }
+        // const marker = new google.maps.Marker({ position:sfBayCoords, map:map });
+    }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0c1X8lfODyP4YpAiYRKDlKR5yDaF9i0Y&callback=initMap">
+</script>
+
 {% endif %}
 
 
