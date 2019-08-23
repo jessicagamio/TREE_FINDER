@@ -70,8 +70,13 @@ def upload_image():
         elif results:
             name,value = results[0] # unpack the concept with the highest value from clarifai
 
-            sci_name, common_name, shape, factoid, margin, venation, image = tree_facts(name) 
+            sci_name, common_name, shape, factoid, margin, venation, image = tree_facts(name)
 
+            """call a function that queries through trees table using
+                sci_name to get all lat lon of the tree species 
+                gather all lat lons in a list
+                and iterate through
+             """
             return render_template("prediction.html", 
                                     value= value,
                                     sci_name=sci_name,
