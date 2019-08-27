@@ -140,13 +140,16 @@ def create_trees(tree_species):
 
         db.session.add(tree)
 
-def create_user():
+def create_user(user):
     """ Create user """
 
+    username,password = user
+    User(username=username, password=password)
     
 
 tree_species = create_species()
 create_trees(tree_species)
+newuser = create_user(['jondoe','abc123'])
 db.session.commit()
 
 
