@@ -67,3 +67,17 @@ class Tree(db.Model):
 
 
 
+class User(db.Model):
+    """Create User"""
+
+    __tablename__ = 'user'
+
+    user_id=db.Column(db.Integer, primary_key=True, autoincrement=True)
+    password=db.Column(db.String, nullable=False)
+    username=db.Column(db.String, nullable=False)
+
+    def __repr__(self):
+        """ Show user information """
+
+        return f"<User user_id={self.user_id}, password={self.password}, username={self.username}>"
+

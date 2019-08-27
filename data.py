@@ -13,7 +13,9 @@ def tree_facts(name):
     tree_dict={
                 'platanus':'Platanus x hispanica',
                 'prunus': 'Prunus cerasifera',
-                'magnolia':'Magnolia grandiflora'
+                'magnolia':'Magnolia grandiflora',
+                'tristan':'Tristaniopsis laurina',
+                'gingko':'Ginkgo biloba'
                 }
 
     sci_name = tree_dict[name]
