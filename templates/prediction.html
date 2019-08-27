@@ -37,16 +37,26 @@
                 zoom:12
         });
 
-        let markerList=[{lat: 37.7809825, lng:-122.444124},{lat: 37.7906331, lng:-122.4041874}];
+        const markers = {{ markers|tojson }};
 
-        for (let mark of markerList){
-            let marker = new google.maps.Marker({ position:mark, map:map });
+        for (let mark of markers){
+            let [ lat, lng ] = mark;
+            console.log(lat,lng);
+            let marker = new google.maps.Marker(
+                { 
+                    position: {
+                        lat: lat,
+                        lng: lng
+                    },
+                    map: map
+                }
+            );
         }
-        // const marker = new google.maps.Marker({ position:sfBayCoords, map:map });
     }
+    // const marker = new google.maps.Marker({ position:sfBayCoords, map:map });
 </script>
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh0-bI-EUg1Pgpy7QT_tTqGBwNDA431o4&callback=initMap">
 </script>
 
 {% endif %}
