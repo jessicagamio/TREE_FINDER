@@ -31,6 +31,11 @@ def index():
 
     return render_template("homepage.html")
 
+@app.route('/login')
+def login():
+    """log in to site"""
+
+    return render_template("login.html")
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
@@ -77,6 +82,15 @@ def upload_image():
                 gather all lat lons in a list
                 and iterate through
              """
+            tree_markers=[]
+
+            markers=TreeSpecies.query.filter(TreeSpecies.sci_name==sci_name).first()
+
+            for marker in markers.trees:
+                tree_markers.append((marker.lat, marker.lon))
+
+
+
             return render_template("prediction.html", 
                                     value= value,
                                     sci_name=sci_name,
@@ -85,7 +99,8 @@ def upload_image():
                                     factoid=factoid,
                                     margin=margin,
                                     venation=venation,
-                                    image=image )
+                                    image=image,
+                                    markers=tree_markers )
         
 
         flash('something weird happened ')

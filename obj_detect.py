@@ -28,7 +28,7 @@ def create_model():
     """Create Model"""
 
     #Create model and add chosen concepts to model
-    model=app.models.create('model_id_1', model_name='detect_tree', concepts=['platanus', 'prunus','magnolia'])
+    model=app.models.create('model_id_1', model_name='detect_tree', concepts=['platanus', 'prunus','magnolia','tristan','gingko'])
 
     # train the model
     model.train()

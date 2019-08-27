@@ -140,6 +140,10 @@ def create_trees(tree_species):
 
         db.session.add(tree)
 
+def create_user():
+    """ Create user """
+
+    
 
 tree_species = create_species()
 create_trees(tree_species)
