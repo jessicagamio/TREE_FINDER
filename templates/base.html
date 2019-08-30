@@ -23,11 +23,24 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" href="/login" id="login-button">Login</a>
       </li>
     </ul>
   </div>
 </nav>
+
+{# <script>
+  
+function logOut(evt){
+    if ({{session['username}){
+        evt.preventDefault();
+        const login= document.querySelector('#login-button');
+        login.innerHTML('Logout');
+        }
+    }
+
+$('#login-button').on('click', logOut);
+</script> #}
 
 {% block content %}
 

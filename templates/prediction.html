@@ -21,10 +21,24 @@
     Leaf Venation: {{venation}}<br>
     Facts: {{factoid}}<br>
     <img src="{{image}}">
+    <br>
+    <button type="button" class="btn btn-success" id="treehugs">Hugs</button>
     </p>
 
 </div>
+<!-- <script>
+const hugs = document.getElementById('treehugs');
 
+function addHug(evt){
+evt.preventDefault();
+
+$.post('/processhug',{{sci_name}},);    
+}
+
+$('treehugs').on('button',addHug)
+
+</script>
+ -->
 <h1>Find {{common_name}}'s in your area !</h1>
 <div id="map"></div>
 

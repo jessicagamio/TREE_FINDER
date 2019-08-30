@@ -2,13 +2,10 @@
 
 {% block content %}
 
-{% for messages in get_flashed_messages() %}
-    
-<div class="alert alert-primary" role="alert">
-   {{messages}}
-</div>
-{% endfor %}
 <div id="flash" style="display:none">
+   <div class="alert alert-primary" role="alert">
+      No file selected 
+  </div>
 </div>
 
 <div id="spin" style="display:none">
@@ -35,46 +32,35 @@
 
 <script>
 
-let imageForm=document.querySelector('#image-form');
-
-function message(){
-  flash=document.querySelector('#flash');
-  if( filename!==true){
-    flash.style.display='';
-  }
+function showSpinner () {
+  const spinner = document.querySelector('#spin');
+  spinner.style.display= 'inline-block';
 }
 
+function hideSpinner () {
+  const spinner = document.querySelector('#spin');
+  spinner.style.display= 'none';
+}
 function formInputs(evt){
-  
-
   const files = document.getElementById('customFile').files;
   console.log(files.length);
+  showSpinner();
+  
   if (files.length===0){
+    console.log(files.length)
     evt.preventDefault();
     const message=document.querySelector('#flash');
 
-    message.innerHTML = `
-  <div class="alert alert-primary" role="alert">
-  No file selected 
-  </div>`;
-    message.style.display='';
+    message.style.display = 'block';
+    hideSpinner();
   }
 
 }
 
-$('#image-form').on('submit', formInputs);
+$('#img_submit').on('click', formInputs);
 
 </script>
-<script>
-  const button= document.querySelector('#img_submit');
 
-  function showSpinner(){
-    const spinner = document.querySelector('#spin');
-    spinner.style.display= '';
-  }
-
-  button.addEventListener('click', showSpinner);
-</script>
 
 <script>
 
@@ -83,7 +69,7 @@ customFile=document.querySelector('#customFile');
 customFile.addEventListener('change',()=>{
   var filename = document.getElementById('customFile').files[0].name;
   $('#displayfile').html(filename);
-})
+  })
 
 </script>
 
