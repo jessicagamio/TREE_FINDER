@@ -73,11 +73,29 @@ class User(db.Model):
     __tablename__ = 'user'
 
     user_id=db.Column(db.Integer, primary_key=True, autoincrement=True)
-    password=db.Column(db.String, nullable=False)
     username=db.Column(db.String, nullable=False)
+    password=db.Column(db.String, nullable=False)
+    firstname=db.Column(db.String, nullable=False)
+    lastname=db.Column(db.String, nullable=False)
+
+    user=db.relationship('Hugs', backref='user')
 
     def __repr__(self):
         """ Show user information """
 
         return f"<User user_id={self.user_id}, password={self.password}, username={self.username}>"
 
+
+class Hugs(db.Model):
+    """Create Tree Hugs Table"""
+
+    __tablename__="hugs"
+
+    hug_id=db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id=db.Column(db.Integer,
+                        db.ForeignKey('user.user_id'))
+    
+    tree_species_id=db.Column(db.Integer, 
+                                db.ForeignKey('tree_species.tree_species_id'))
+
+    tree_hugs=db.relationship('TreeSpecies', backref='hugs')

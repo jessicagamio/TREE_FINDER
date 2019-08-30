@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% for messages in get_flashed_messages() %}
+    
+<div class="alert alert-primary" role="alert">
+   {{messages}}
+</div>
+{% endfor %}
+
+<h1>{{session['username']}}'s Dashboard</h1>
+
+{%  endblock %}

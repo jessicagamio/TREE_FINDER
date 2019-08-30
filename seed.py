@@ -149,7 +149,7 @@ def create_user(user):
 
 tree_species = create_species()
 create_trees(tree_species)
-newuser = create_user(['jondoe','abc123'])
+user = create_user(['jondoe','abc123'])
 db.session.commit()
 
 
