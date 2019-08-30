@@ -36,16 +36,16 @@ def user_dashboard():
 
     username=request.form['username']
     password=request.form['password']
-    print(username,password)
-    session['username'] = username
 
-    flash(f'{username} is logged in.')
-    #Query user table for username and password
-        #if username and password match
-            #pass user first name and lastname into dashboard
-            #add flash message to welcome username
+    if username == "Jessica" and password=="123":
+        session['username'] = username
 
-    return render_template("dashboard.html")
+        flash(f'{username} is logged in.')
+
+        return render_template("dashboard.html")
+
+    else:
+        return redirect('/login')
 
 @app.route('/login')
 def login():
