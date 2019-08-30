@@ -20,7 +20,6 @@ app.config['UPLOAD_FOLDER'] = '/home/vagrant/src/TREE_FINDER/static/img/uploads'
 
 def allowed_file(filename):
     """checks if extension is valid"""
-
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -28,14 +27,33 @@ def allowed_file(filename):
 @app.route('/')
 def index():
     """Homepage"""
-
+    
     return render_template("homepage.html")
+
+@app.route('/dashboard', methods=['POST'])
+def user_dashboard():
+    """log into dash"""
+
+    username=request.form['username']
+    password=request.form['password']
+    print(username,password)
+    session['username'] = username
+
+    flash(f'{username} is logged in.')
+    #Query user table for username and password
+        #if username and password match
+            #pass user first name and lastname into dashboard
+            #add flash message to welcome username
+
+    return render_template("dashboard.html")
 
 @app.route('/login')
 def login():
     """log in to site"""
 
     return render_template("login.html")
+
+
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
