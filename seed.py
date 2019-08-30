@@ -72,7 +72,7 @@ def create_species():
 
 
     scientific_name = 'Tristaniopsis laurina'
-    common_name = 'common name'
+    common_name = 'Small-Leaf Tristania'
     shape = 'lanceolate'
     margin = 'entire'
     venation = 'pinnate'
@@ -96,7 +96,7 @@ def create_species():
     margin = 'entire'
     venation = 'parallel'
     factoid = 'Can live as long as 3000 years. Leaves turn yellow in the fall.'
-    image = '/static/img/gingko.jpg'
+    image = '/static/img/ginkgo.jpg'
     Ficus_microcarpa_nitida = TreeSpecies(sci_name=scientific_name, 
                 common_name=common_name,
                 shape=shape, 
@@ -143,13 +143,18 @@ def create_trees(tree_species):
 def create_user(user):
     """ Create user """
 
-    username,password = user
-    User(username=username, password=password)
+    username,password,firstname,lastname = user
+    User(username=username, password=password, firstname=firstname,lastname=lastname, user=user_id)
     
+
+def create_hugs(username, tree_species)
+
+    
+    Hugs()
 
 tree_species = create_species()
 create_trees(tree_species)
-user = create_user(['jondoe','abc123'])
+user = create_user(['jondoe','abc123', 'Jon','Doe'])
 db.session.commit()
 
 
