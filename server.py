@@ -3,7 +3,7 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from werkzeug.utils import secure_filename
-from model import connect_to_db, db, Tree, TreeSpecies
+from model import connect_to_db, db, Tree, TreeSpecies, User, Hugs
 from obj_detect import predict_model
 from data import tree_facts
 
@@ -30,21 +30,28 @@ def index():
     
     return render_template("homepage.html")
 
-@app.route('/dashboard', methods=['POST'])
-def user_dashboard():
+@app.route('/processlogin', methods=['POST'])
+def process_login():
     """log into dash"""
 
-    username=request.form['username']
+    user_name=request.form['username']
     password=request.form['password']
 
-    if username == "Jessica" and password=="123":
-        session['username'] = username
+    entered_username=User.query.filter(User.username==user_name).count()
+    print('===============> usercount: ',entered_username)
+    entered_password=User.query.filter(User.password==password).count()
+    print('=================> password: ', entered_password)
+    if entered_username and entered_password:
+        user = User.query.filter(User.username == user_name).first()
+        user_id = user.user_id
+        session['user_id'] = user_id
 
-        flash(f'{username} is logged in.')
+        flash(f'{user_name} is logged in.')
 
-        return render_template("dashboard.html")
+        return render_template("dashboard.html", username=user_name)
 
     else:
+        flash('Not a valid username or password')
         return redirect('/login')
 
 @app.route('/login')
@@ -52,6 +59,40 @@ def login():
     """log in to site"""
 
     return render_template("login.html")
+
+@app.route('/logout')
+def logout():
+    """logout the user"""
+    del session["user_id"]
+    flash("Logged Out.")    
+    return redirect('/')
+
+@app.route('/register')
+def register_user():
+    """display registration form"""
+    return render_template("register.html")
+
+@app.route('/process_register', methods=['POST'])
+def process_registration():
+    """Process Registeration Form"""
+
+    user_name=request.form['username']
+    firstname=request.form['firstname']
+    lastname=request.form['lastname']
+    password=request.form['password']
+
+    # if register username does NOT exist in db add username
+    if User.query.filter(User.username==user_name).count():
+
+        return redirect('/register')
+
+    else:
+        new_user=User(username=user_name, firstname=firstname, lastname=lastname, password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        new_guy=User.query.filter(User.username==user_name).first()
+        print("========  new user added ========>",new_guy.username)
+        return redirect('/')
 
 
 
