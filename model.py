@@ -11,6 +11,7 @@ def connect_to_db(app):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
+    db.create_all()
 
     print('Connected to db!')
 
@@ -78,7 +79,7 @@ class User(db.Model):
     firstname=db.Column(db.String, nullable=False)
     lastname=db.Column(db.String, nullable=False)
 
-    user=db.relationship('Hugs', backref='user')
+    hugged_trees = db.relationship('TreeSpecies', secondary='hugs', backref='users_hugged')
 
     def __repr__(self):
         """ Show user information """
@@ -97,5 +98,3 @@ class Hugs(db.Model):
     
     tree_species_id=db.Column(db.Integer, 
                                 db.ForeignKey('tree_species.tree_species_id'))
-
-    tree_hugs=db.relationship('TreeSpecies', backref='hugs')
