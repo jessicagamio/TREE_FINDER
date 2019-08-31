@@ -1,6 +1,6 @@
 
 from sqlalchemy import func
-from model import TreeSpecies,Tree,connect_to_db, db
+from model import TreeSpecies,Tree,User, Hugs, connect_to_db, db
 from server import app
 import json
 
@@ -144,17 +144,21 @@ def create_user(user):
     """ Create user """
 
     username,password,firstname,lastname = user
-    User(username=username, password=password, firstname=firstname,lastname=lastname, user=user_id)
+    new_user = User(username=username, password=password, firstname=firstname,lastname=lastname)
+
+    db.session.add(new_user)
     
 
-def create_hugs(username, tree_species)
+def create_hugs(username, tree_species):
+    """create Hugs"""
 
     
-    Hugs()
+
 
 tree_species = create_species()
 create_trees(tree_species)
-user = create_user(['jondoe','abc123', 'Jon','Doe'])
+
+create_user(['jondoe','abc123', 'Jon','Doe'])
 db.session.commit()
 
 
