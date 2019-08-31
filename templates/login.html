@@ -9,16 +9,23 @@
 </div>
 <h1>Log in </h1>
 <div>
-<form action="/dashboard" method="POST" id="login_form">
+<form action="/processlogin" method="POST" id="login_form">
     <label> user name <input type="text" name="username" id="username" required></label>
     <br>
     <label> password <input type="text" name="password" id="password" required></label>
     <br>
     <input type="submit" value="submit" id="login_submit">
 </form>
+<p>
+New User?
+<a href="/register">Register Here</a>
+</p>
 </div>
 <script> 
-
+function showLogOut(){
+    const logOut= document.querySelector('#logout-button');
+    logOut.style.display='block';
+}
 function logInputs(){
     const username=document.querySelector('#username');
     const password=document.querySelector('#password');
@@ -29,10 +36,23 @@ function logInputs(){
         
         flashMessage.style.display='block';
         } 
+    else{
+        showLogOut();
+        }
     }
 
 $('#login_submit').on('click', logInputs);
 
 </script>
+<!-- <script>
 
+   function showLogOut(){
+    const logOut= document.querySelector('#logout-button');
+    logOut.style.display='block';
+
+    $.get('/processlogin', session['user_id'], showLogOut );
+    } 
+
+</script>
+ -->
 {%  endblock %}

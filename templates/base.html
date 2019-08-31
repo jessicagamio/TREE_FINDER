@@ -25,11 +25,22 @@
       <li class="nav-item">
         <a class="nav-link" href="/login" id="login-button">Login</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout" id="logout-button" style="display:none">Logout</a>
+      </li>
     </ul>
   </div>
 </nav>
 
+<script>
+  function hideLogOut(){
+    const logOut=document.querySelector('#logout-button');
+    logOut.style.display='none'
 
+  }
+
+  
+</script>
 {% block content %}
 
 

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div id="register-error" style="display:none">
+    <div class="alert alert-primary" role="alert" >
+             Must fill out all fields. 
+    </div>
+</div>
+<h1>Register </h1>
+<div>
+<form action="/process_register" method="POST" id="register_form">
+    <label> User Name <input type="text" name="username" id="username" required></label>
+    <br>
+    <label> First Name <input type="text" name="firstname" id="firstname" required></label>
+    <br>
+    <label> Last Name <input type="text" name="lastname" id="lastname" required></label>
+    <br>
+    <label> Password <input type="text" name="password" id="password" required></label>
+    <br>
+    <input type="submit" value="submit" id="register_submit">
+</form>
+
+</div>
+<script> 
+
+function logInputs(){
+    const username=document.querySelector('#username');
+    const password=document.querySelector('#password');
+    const firstname=document.querySelector('#fistname');
+    const lastname=document.querySelector('#lastname');
+    const flashMessage=document.querySelector('#register-error');
+    
+
+    if (username.value === "" || password.value===""){
+        
+        flashMessage.style.display='block';
+        } 
+    }
+
+$('#register_submit').on('click', logInputs);
+
+</script>
+
+{%  endblock %}
