@@ -72,6 +72,21 @@ def register_user():
     """display registration form"""
     return render_template("register.html")
 
+
+@app.route('/hugs', methods=['POST'])
+def process_hug():
+    """ Adds a tree hug from user """
+
+    user_id=request.form.get('user_id')
+    tree_species=request.form.get('tree_species')
+
+    tree_species_id = TreeSpecies.query.filter(TreeSpecies.sci_name==tree_species).first()
+    tree_hug = Hugs(user_id=user_id, tree_species_id = tree_species_id)
+    print(tree_hug)
+
+    return "You Hugged a Tree"
+
+
 @app.route('/process_register', methods=['POST'])
 def process_registration():
     """Process Registeration Form"""
@@ -128,8 +143,6 @@ def upload_image():
         if results == []:
             value = 0
             return render_template("prediction.html", value=value)
-
-        #if results are not empty do th follwoing
         
         elif results:
             name,value = results[0] # unpack the concept with the highest value from clarifai

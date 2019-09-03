@@ -22,23 +22,32 @@
     Facts: {{factoid}}<br>
     <img src="{{image}}">
     <br>
-    <button  data-sci_name= {{sci_name}} type="button" class="btn btn-success" id="treehugs">Hugs</button>
+    <button  data-sci-name= "{{sci_name}}" type="button" class="btn btn-success" id="treehugs">Hugs</button>
     </p>
 
 </div>
-<!-- <script>
-const hugs = document.getElementById('treehugs');
+    <script>
+    const hugs = document.getElementById('treehugs');
 
-function addHug(evt){
-evt.preventDefault();
+    function processHug(evt){
+        evt.preventDefault();
 
-$.post('/processhug',{{sci_name}},);    
-}
+        function changeToRed(){
+            hugs.class="btn btn-danger";
+            $('#treehugs').html("Hugged");
+        }
 
-$('treehugs').on('button',addHug)
+        const hugInfo = {
+        'tree_species':$('#treehugs').data('sciName'),
+        'user_id': $('#logout-button').data('session')     
+        };
 
-</script>
- -->
+        $.post('/hugs',hugInfo,changeToRed);
+    }
+
+    $('#treehugs').on('click', processHug);
+    </script>
+   
 <h1>Find {{common_name}}'s in your area !</h1>
 <div id="map"></div>
 
