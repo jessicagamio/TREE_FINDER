@@ -22,4 +22,20 @@
 }
 
 
+#hug-boxes{
+  width: 200px;
+  height: 200px;
+  border: solid;
+  color: grey;
+  padding:50px;
+  margin:25px;
+}
+
+
+.board{
+  width: 600px;
+  height: 600px;
+  border: solid;
+  color: grey;
+}
 /* ... */
