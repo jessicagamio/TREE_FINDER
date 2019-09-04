@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-
-{% for messages in get_flashed_messages() %}
-    
-<div class="alert alert-primary" role="alert">
-   {{messages}}
-</div>
-{% endfor %}
 
 <h1>{{username}}'s Dashboard</h1>
 
+<div>
+    <h2>Tree hugs</h2>
+</div>
+
+<div id="hug" class="board"> 
+
+    {% for hugs in tree_hugs %}
+    <div id="hug-boxes" class="hub-boxes">{{hugs}}</div>
+    {% endfor %}
+
+</div>
+<div>
+    <h2>Plant a Tree</h2>
+</div>
+<div class="board">
+
+
+</div>
 {%  endblock %}

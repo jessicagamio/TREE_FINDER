@@ -39,12 +39,19 @@
   </div>
 </nav>
 
+{% for messages in get_flashed_messages() %}
+    
+<div class="alert alert-primary" role="alert">
+   {{messages}}
+</div>
+{% endfor %}
 {% block content %}
 
 
 
 
 {%  endblock %}
+
 </body>
 <footer>  </footer>
 </html>
