@@ -48,11 +48,26 @@ def process_login():
 
         flash(f'{user_name} is logged in.')
 
-        return render_template("dashboard.html", username=user_name)
+        # return render_template("dashboard.html", username=user_name)
+        return redirect('/')
 
     else:
         flash('Not a valid username or password')
         return redirect('/login')
+
+
+@app.route('/dashboard')
+def dashboard():
+    """ display dashboard """
+
+    user_id = session['user_id']
+
+    user = User.query.filter(User.user_id==user_id).first()
+
+    user_hugs=[tree.sci_name for tree in user.hugged_trees]
+
+    return render_template("dashboard.html", tree_hugs=user_hugs, username=user.username)
+
 
 @app.route('/login')
 def login():
@@ -80,10 +95,11 @@ def process_hug():
     user_id=request.form.get('user_id')
     tree_species=request.form.get('tree_species')
 
-    tree_species_id = TreeSpecies.query.filter(TreeSpecies.sci_name==tree_species).first()
-    tree_hug = Hugs(user_id=user_id, tree_species_id = tree_species_id)
-    print(tree_hug)
-
+    print('=================> userid and tree species',user_id, tree_species)
+    tree = TreeSpecies.query.filter(TreeSpecies.sci_name==tree_species).first()
+    tree_hug = Hugs(user_id=user_id, tree_species_id = tree.tree_species_id)
+    db.session.add(tree_hug)
+    db.session.commit()
     return "You Hugged a Tree"
 
 
