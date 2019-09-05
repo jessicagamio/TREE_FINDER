@@ -145,15 +145,16 @@ def upload_image():
         flash ('Must be a jpg or png file.')
         return redirect('/')
 
+    # if image is correct file type create a path to that image in upload folder
     if image and allowed_file(image.filename):
         filename=secure_filename(image.filename)
         image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
         path = os.path.join(app.config["UPLOAD_FOLDER"], image.filename)
-            
+           
+        #send image to clarifai 
         results = predict_model(path) # predict tree from uploaded image in clarifai
 
-        print('=======>', results)
-        
+        # remove image after uploading image to claifia
         os.remove(path)
         
         if results == []:
