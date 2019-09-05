@@ -165,11 +165,6 @@ def upload_image():
 
             sci_name, common_name, shape, factoid, margin, venation, image = tree_facts(name)
 
-            """call a function that queries through trees table using
-                sci_name to get all lat lon of the tree species 
-                gather all lat lons in a list
-                and iterate through
-             """
             tree_markers=[]
 
             markers=TreeSpecies.query.filter(TreeSpecies.sci_name==sci_name).first()
