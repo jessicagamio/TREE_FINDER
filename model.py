@@ -3,10 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-def connect_to_db(app):
+def connect_to_db(app,dbname='trees'):
     """Connect to database"""
-
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///trees'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql:///{dbname}'
     app.config['SQLALCHEMY_ECHO'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
@@ -98,3 +98,28 @@ class Hugs(db.Model):
     
     tree_species_id=db.Column(db.Integer, 
                                 db.ForeignKey('tree_species.tree_species_id'))
+
+
+
+def example_data():
+    """Creating sample data for user"""
+    User.query.delete()
+
+    Merry=User(username='Merry', firstname='Meridock', lastname='Bramdybuck', password='lord')
+    Arwen=User(username='Arwen', firstname = 'Arwen', lastname='Evenstar', password='Aragorn')
+    db.session.add(Merry)
+    db.session.add(Arwen)
+    db.session.commit()
+
+# class Plant(db.Model):
+#     """ Plant a tree"""
+
+#     __tablename__="plant"
+
+#     plant_id = db.column(db.Integer, primary_key=True,autoincrement=True)
+#     user_id = db.column(db.Integer,
+#                             db.ForeignKey('user.user_id'))
+#     latitude=db.column(db.Float, nullable=False)
+#     longitude=db.column(db.Float, nullable=False)
+#     tree_species_id=db.Column(db.Integer, 
+#                                 db.ForeignKey('tree_species.tree_species_id'))
