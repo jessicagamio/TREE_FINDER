@@ -30,7 +30,44 @@
     </form>
 </div>
 
+<script>
 
+  function printToConsole(){
+    console.log('this worked successfully');
+  }
+  function dropHandler(evt){
+    console.log('Files dropped');
+    //Drop file
+    //Prevent Default Behavior
+    evt.preventDefault();
+
+    //Use DataTransferItemList to access file
+    if (evt.dataTransfer.items){
+      for (let i=0; i<evt.dataTransfer.items.length; i++){
+          //if item not a file, reject it
+          if(evt.dataTransfer.items[i].kind == 'file'){
+              let file=evt.dataTransfer.items[i].getAsFile();
+              console.log(file)
+              console.log('.....file['+i+'].name='+file.name);      
+          }
+          else{
+            //Use Datatransfer interface to acces file
+            for(let i=0; i< evt.dataTransfer.files.length; i++){
+              console.log('.....file['+i+'].name='+evt.dataTransfer.files[i].name);}
+            }}}
+    }
+
+    function dragOverHandler(evt){
+      console.log('file IN DROPZONE')
+      //draggin file over
+      evt.preventDefault();
+    }
+
+
+  // $.post('/upload', file, printToConsole);
+
+  // $('#img_submit').on('click', )
+</script>
 
 
 <script src="/static/js/homepage.js"></script>
