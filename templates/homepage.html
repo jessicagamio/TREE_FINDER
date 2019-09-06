@@ -15,7 +15,7 @@
 </div>
 
 
-<div id ="dropzone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+<div id ="dropzone">
     <p>Drop image here</p>
 </div>
 
@@ -31,42 +31,96 @@
 </div>
 
 <script>
+  //function dropHandler(evt){
+    //console.log('Files dropped');
+      //Prevent file from automatically opening
+      //evt.preventDefault();
 
-  function printToConsole(){
-    console.log('this worked successfully');
-  }
-  function dropHandler(evt){
-    console.log('Files dropped');
-    //Drop file
-    //Prevent Default Behavior
+    // what does this do??
+    // evt.stopPropagation();
+
+    // Use DataTransferItemList to access file
+    // const droppedFiles = [];
+
+    //evt.dataTransfer = evt.originalEvent.dataTransfer;
+    //const file= evt.dataTransfer.items
+    //if (file) {
+      //for (let i = 0; i < file.length; i += 1) {
+        //const item = file.items[i];
+
+  //       // Check if item is a file
+
+  //       if (item.kind === 'file') {
+  //         const file = item.getAsFile();
+  //         console.log(file)
+  //         // droppedFiles.push(file);    
+  //       }
+  //     }
+  //   }
+  //   else {
+  //     // Use Datatransfer interface to acces file
+  //     for (let i = 0; i< evt.dataTransfer.files.length; i += 1){
+  //       const file = evt.dataTransfer.files[i];
+  //       console.log(`.....file['${i}'].name=${file.name}`);
+  //       // droppedFiles.push(file);
+  //     }
+  //   }
+
+  // }
+
+
+
+
+function dropHandler(evt) {
+
+  const inputFile=document.querySelector('#customFile');
+
+  console.log('File(s) dropped');
+
+  // Prevent default behavior (Prevent file from being opened)
+  evt.preventDefault();
+  console.log('evt....',evt);
+
+  //set dataTransfer to browsers unmodified native event object
+  // fixes console evt.dataTransfer undefined error
+  evt.dataTransfer = evt.originalEvent.dataTransfer;
+
+  console.log('evt.dataTransfer.items......', evt.dataTransfer);
+  const files = evt.dataTransfer.files;
+
+  console.log('file....',files);
+
+  inputFile.files=files;
+  //get file object
+  //const getFile = file.getAsFile();
+
+  //console.log('getFile.........',getFile); 
+
+  // const data= new FormData();
+
+  // data.append('file',getFile);
+
+  // console.log('data........',data);
+  // uploadData(data);
+
+  //$.post('/upload',getFile[0],() => console.log('yay!'));  
+}
+    // $('#img_submit').off('click');
+
+  // $('#img_submit').on('click', () => {
+  //     $.post('/upload',data,() => console.log('yay!'));
+  //   });
+  //  }
+
+  function dragOverHandler(evt) {
+    console.log('file IN DROPZONE')
+    // prevents default browser dragging
     evt.preventDefault();
+    // evt.stopPropagation();
+  }
 
-    //Use DataTransferItemList to access file
-    if (evt.dataTransfer.items){
-      for (let i=0; i<evt.dataTransfer.items.length; i++){
-          //if item not a file, reject it
-          if(evt.dataTransfer.items[i].kind == 'file'){
-              let file=evt.dataTransfer.items[i].getAsFile();
-              console.log(file)
-              console.log('.....file['+i+'].name='+file.name);      
-          }
-          else{
-            //Use Datatransfer interface to acces file
-            for(let i=0; i< evt.dataTransfer.files.length; i++){
-              console.log('.....file['+i+'].name='+evt.dataTransfer.files[i].name);}
-            }}}
-    }
-
-    function dragOverHandler(evt){
-      console.log('file IN DROPZONE')
-      //draggin file over
-      evt.preventDefault();
-    }
-
-
-  // $.post('/upload', file, printToConsole);
-
-  // $('#img_submit').on('click', )
+  $('#dropzone').on('drop', dropHandler);
+  $('#dropzone').on('dragover', dragOverHandler);
 </script>
 
 
