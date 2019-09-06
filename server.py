@@ -135,7 +135,17 @@ def upload_image():
         flash('No file part')
         return redirect('/')
 
-    image = request.files['upload']
+###########################################
+
+    # if file was uploaded using form
+    if request.files['upload']:
+        image = request.files['upload']
+    # else file has been sent by post request
+    else:
+        image = request.form.get('file') 
+
+###############################################
+    # image = request.files['upload']
 
     if image.filename == '':
         flash('No File Selected')
