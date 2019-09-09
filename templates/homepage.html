@@ -2,80 +2,108 @@
 
 {% block content %}
 
-<div id="flash" style="display:none">
-   <div class="alert alert-primary" role="alert">
-      No file selected 
-  </div>
-</div>
-
-<div id="spin" style="display:none">
-  <div class="spinner-border" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>
+<div class="container" id="homepage">
 
 
-<div id ="dropzone">
-    <p>Drop image here</p>
-</div>
-
-<div>
-    <form id="image-form" action="/upload" method="POST" enctype="multipart/form-data">
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile"  name="upload" accept="image/*" required>
-         <label class="custom-file-label" for="customFile" id="displayfile">Choose file</label>
-           <br>
-          <input type='submit' value='Submit' id='img_submit'>
+  <div class="row">
+    <!-- Blank space -->
+      <div class="col" id="blank-space">
       </div>
-    </form>
+  </div>
+
+  <div class="row" id="frontpage-icons">
+    <!-- Explanation -->
+      <div class="col-2" id="icon-leaf">
+        Spot
+      </div>
+      <div class="col-2" id="icon-camera">
+        Snap
+      </div>
+      <div class="col-2" id="icon-processing">
+        Send
+      </div>
+      <div class="col-2" id="icon-tree">
+        Discover
+      </div>
+  </div>
+
+<div class="row">
+    <div class="col" id="icon-instruction">
+    </div>
+</div>
+
+
+<div class="row">
+    <!-- Loading Area -->
+      <div class="col" id="loading-zone">
+     
+        <div id="flash" style="display:none">
+           <div class="alert alert-primary" role="alert">
+              No file selected 
+          </div>
+        </div>
+
+        <div id="spin" style="display:none">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+
+
+        <div id ="dropzone">
+            <p id ="dropImageTag">Drop image here</p>
+        </div>
+
+
+        <div>
+            <form id="image-form" action="/upload" method="POST" enctype="multipart/form-data">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile"  name="upload" accept="image/*" required>
+                 <label class="custom-file-label" for="customFile" id="displayfile">Choose file</label>
+                   <br>
+                  <input type='submit' value='Submit' id='img_submit'>
+              </div>
+            </form>
+        </div>
+
+      </div>
+  </div>
+
+<div class="row">
+  <div class="col" id="footer"></div>
+</div>
+
 </div>
 
 <script>
-  //function dropHandler(evt){
-    //console.log('Files dropped');
-      //Prevent file from automatically opening
-      //evt.preventDefault();
 
-    // what does this do??
-    // evt.stopPropagation();
+//Instructions Pick a Leaf
+$('#icon-leaf').mouseenter(()=>{$('#icon-instruction').html('Pluck a leave from a tree you curious to learn more about.');});
+$('#icon-leaf').mouseleave(()=>{$('#icon-instruction').html('');});
 
-    // Use DataTransferItemList to access file
-    // const droppedFiles = [];
+//Instructions Center Leaf in camera
+$('#icon-camera').mouseenter(()=>{$('#icon-instruction').html('Take a picture. For best results take a single leaf and in frame. Avoid foilage in background and strong shadows.');});
 
-    //evt.dataTransfer = evt.originalEvent.dataTransfer;
-    //const file= evt.dataTransfer.items
-    //if (file) {
-      //for (let i = 0; i < file.length; i += 1) {
-        //const item = file.items[i];
-
-  //       // Check if item is a file
-
-  //       if (item.kind === 'file') {
-  //         const file = item.getAsFile();
-  //         console.log(file)
-  //         // droppedFiles.push(file);    
-  //       }
-  //     }
-  //   }
-  //   else {
-  //     // Use Datatransfer interface to acces file
-  //     for (let i = 0; i< evt.dataTransfer.files.length; i += 1){
-  //       const file = evt.dataTransfer.files[i];
-  //       console.log(`.....file['${i}'].name=${file.name}`);
-  //       // droppedFiles.push(file);
-  //     }
-  //   }
-
-  // }
+$('#icon-camera').mouseleave(()=>{$('#icon-instruction').html('');});
 
 
+$('#icon-processing').mouseenter(()=>{$('#icon-instruction').html('Upload your image and let the magic happen.');});
+$('#icon-processing').mouseleave(()=>{$('#icon-instruction').html('Upload your image and let the magic happen.');});
 
+
+$('#icon-tree').mouseenter(()=>{$('#icon-instruction').html('Find your tree and Save it for later.');});
+$('#icon-tree').mouseleave(()=>{$('#icon-instruction').html('');});
+
+// $('#icon-tree').html('<p>Get an answer!</p>')
+
+</script>
+
+<script>
 
 function dropHandler(evt) {
 
   const inputFile=document.querySelector('#customFile');
 
-  console.log('File(s) dropped');
 
   // Prevent default behavior (Prevent file from being opened)
   evt.preventDefault();
@@ -85,32 +113,14 @@ function dropHandler(evt) {
   // fixes console evt.dataTransfer undefined error
   evt.dataTransfer = evt.originalEvent.dataTransfer;
 
-  console.log('evt.dataTransfer.items......', evt.dataTransfer);
   const files = evt.dataTransfer.files;
 
-  console.log('file....',files);
-
+  //set input file as the drag/drop file
   inputFile.files=files;
-  //get file object
-  //const getFile = file.getAsFile();
 
-  //console.log('getFile.........',getFile); 
+  $('#dropImageTag').html(inputFile.files[0].name);
 
-  // const data= new FormData();
-
-  // data.append('file',getFile);
-
-  // console.log('data........',data);
-  // uploadData(data);
-
-  //$.post('/upload',getFile[0],() => console.log('yay!'));  
-}
-    // $('#img_submit').off('click');
-
-  // $('#img_submit').on('click', () => {
-  //     $.post('/upload',data,() => console.log('yay!'));
-  //   });
-  //  }
+  }
 
   function dragOverHandler(evt) {
     console.log('file IN DROPZONE')
