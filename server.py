@@ -68,6 +68,24 @@ def dashboard():
 
     return render_template("dashboard.html", tree_hugs=user_hugs, username=user.username)
 
+@app.route('/dashinfo')
+def dashboard_info():
+
+    sci_name=request.args.get('getInfo')
+    print('sci_name-------->',sci_name)
+
+    # user_id=session['user_id']
+
+    tree=TreeSpecies.query.filter(TreeSpecies.sci_name==sci_name).first()
+
+    hugInfo={'sci_name':tree.sci_name,
+                'common_name':tree.common_name,
+                'tree_facts': tree.factoid,
+                'image':tree.image}
+
+    return hugInfo 
+
+
 
 @app.route('/login')
 def login():
@@ -180,6 +198,7 @@ def upload_image():
 
             markers=TreeSpecies.query.filter(TreeSpecies.sci_name==sci_name).first()
 
+            print('========== markers  ===========>>>>',markers)
             for marker in markers.trees:
                 tree_markers.append((marker.lat, marker.lon))
 
