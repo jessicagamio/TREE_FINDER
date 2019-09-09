@@ -4,22 +4,45 @@
 
 <h1>{{username}}'s Dashboard</h1>
 
-<div>
-    <h2>Tree hugs</h2>
-</div>
+
+<h2>Tree hugs</h2>
+
 
 <div id="hug" class="board"> 
 
     {% for hugs in tree_hugs %}
-    <div id="hug-boxes" class="hub-boxes">{{hugs}}</div>
+   
+        <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}">{{hugs}}</div>
+       
     {% endfor %}
 
 </div>
-<div>
-    <h2>Plant a Tree</h2>
+
+<div id="information">
+<h2>Tree Information</h2>
+    <p id="dashInfo"></p>
 </div>
-<div class="board">
+<script>
+
+    function updateDash(response) {
+        const status = response;
+        // console.log(status);
+        $('#dashInfo').html(status.common_name);  
+    }
+
+   function getTreeInfo(evt){
+        console.log(evt);
+        const sci_name=$(evt.target).data('sciName');
 
 
-</div>
+        $.get('/dashinfo',{'getInfo':sci_name},updateDash);
+     }
+        
+   
+
+
+    $('.hug-boxes').on('click',getTreeInfo);
+
+
+</script>
 {%  endblock %}
