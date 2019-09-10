@@ -3,36 +3,48 @@
 
 {% block content %}
 
-
-<h1 class="title">Your results: </h1>
-
-
-{% if value >= 10 %}
-<div>
-    This is  a {{common_name}}
-
-</div>
-<div>
-    <h2>Facts</h2>
-    <p>
-    Scientific Name: {{sci_name}}<br>
-    Common Name: {{common_name}}<br>
-    Leaf Shape: {{shape}}<br>
-    Leaf Margin: {{margin}}<br>
-    Leaf Venation: {{venation}}<br>
-    Facts: {{factoid}}<br>
-    <img src="{{image}}">
-    <br>
-    <button  data-sci-name= "{{sci_name}}" type="button" class="btn btn-success" id="treehugs">Hugs</button>
-    </p>
-
-</div>
+<div class="container">
 
 
-<h1>{{common_name}}'s in the SF Area</h1>
-<div id="map"></div>
+
+   {% if value >= 10 %}
+        <div class="row" id="prediction-first-row">
+            <div class="col" id="result-image">
+                <img src="{{image}}" id="prediction-image" width="400" height="400">
+            </div>
 
 
+            <div class="col" id="result-facts">
+
+                  <!--   {% if value >= 10 %} -->
+
+                    <h1 class="title">{{common_name}} </h1>
+                    <div>
+                        <h2>Facts about {{common_name}}'s</h2>
+                        <p>
+                        Scientific Name: {{sci_name}}<br>
+                        Common Name: {{common_name}}<br>
+                        Leaf Shape: {{shape}}<br>
+                        Leaf Margin: {{margin}}<br>
+                        Leaf Venation: {{venation}}<br>
+                        Facts: {{factoid}}<br>
+                    <!--     <img src="{{image}}"> -->
+                        <br>
+                        <button  data-sci-name= "{{sci_name}}" type="button" class="btn btn-success" id="treehugs">Hugs</button>
+                        </p>
+                    </div>
+            </div>
+        </div>
+          <!--   </div> -->
+    <div class="row" id="prediction-second-row">
+        <!-- <div class="col-2"></div> -->
+            <div class="col-8" id="map-result">
+                <h1>{{common_name}} found in San Francisco</h1>
+                <div id="map"></div>
+            </div>
+        <!-- <div class="col-2"></div> -->
+      
+    </div>
 <script>
 
 
@@ -117,12 +129,20 @@
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh0-bI-EUg1Pgpy7QT_tTqGBwNDA431o4&callback=initMap">
 </script>
+
+<!-- {% endif %} -->
+
+{% elif value == 0 %}
+    
+    <div class="row">
+        <div class="col" >
+            <div id="no-match-found">
+                <h1>No match found.</h1>
+            </div>
+        </div>
+    </div>
 {% endif %}
 
-{% if value == 0 %}
-<div>
-    No significant match found. Try again!
+
 </div>
-{% endif %}
-
 {% endblock %}
