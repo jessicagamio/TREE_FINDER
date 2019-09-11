@@ -3,7 +3,9 @@
 {% block content %}
 
 <div class="container" id="homepage">
-
+<!-- <video autoplay muted loop id="siteVideo">
+  <source src="static/img/coverr-sunrise-1563948708950.mp4" type="video/mp4">
+</video> -->
 
   <div class="row">
     <!-- Blank space -->
@@ -14,16 +16,20 @@
   <div class="row" id="frontpage-icons">
     <!-- Explanation -->
       <div class="col-2" id="icon-leaf">
+        <img src="static/img/leaf_icon.png" width="50px" height="50px" id="leaf">
         Spot
       </div>
       <div class="col-2" id="icon-camera">
+        <img src="static/img/camera.svg" width="50px" height="50px" id="camera">
         Snap
       </div>
       <div class="col-2" id="icon-processing">
+        <img src="static/img/send-icon.svg" width="50px" height="50px" id="camera">
         Send
       </div>
       <div class="col-2" id="icon-tree">
-        Discover
+        <img src="static/img/tree-icon.svg" width="50px" height="50px" id="tree">
+        Learn
       </div>
   </div>
 
@@ -35,7 +41,7 @@
 
 <div class="row">
     <!-- Loading Area -->
-      <div class="col" id="loading-zone">
+      <!-- <div id="loading-zone" > -->
      
         <div id="flash" style="display:none">
            <div class="alert alert-primary" role="alert">
@@ -43,31 +49,37 @@
           </div>
         </div>
 
-        <div id="spin" style="display:none">
+     <!--    <div id="spin" style="display:none">
           <div class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
           </div>
-        </div>
+        </div> -->
 
 
-        <div id ="dropzone">
+        <div id ="dropzone" class="col align-center-self">
+    <!--     <div id ="dropzone" class="col-md-4 align-center-self"> -->
             <p id ="dropImageTag">Drop image here</p>
+                  <div id="spin" style="display:none" >
+                  <div class="spinner-border text-success" role="status" style= "width: 5rem; height: 5rem;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  </div>
         </div>
-
-
-        <div>
+   <!--    </div> -->
+</div>
+<div class="row">
+        <div class="col align-center-self" id="upload">
             <form id="image-form" action="/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="customFile"  name="upload" accept="image/*" required>
                  <label class="custom-file-label" for="customFile" id="displayfile">Choose file</label>
                    <br>
-                  <input type='submit' value='Submit' id='img_submit'>
+                  <input type='submit' value='Submit' id='img_submit' class="btn btn-secondary">
               </div>
             </form>
         </div>
 
       </div>
-  </div>
 
 <div class="row">
   <div class="col" id="footer"></div>
@@ -86,11 +98,11 @@ $('#icon-camera').mouseenter(()=>{$('#icon-instruction').html('Take a picture. F
 
 $('#icon-camera').mouseleave(()=>{$('#icon-instruction').html('');});
 
-
+//Instructions Upload
 $('#icon-processing').mouseenter(()=>{$('#icon-instruction').html('Upload your image and let the magic happen.');});
 $('#icon-processing').mouseleave(()=>{$('#icon-instruction').html('Upload your image and let the magic happen.');});
 
-
+//Instructions Get a result
 $('#icon-tree').mouseenter(()=>{$('#icon-instruction').html('Find your tree and Save it for later.');});
 $('#icon-tree').mouseleave(()=>{$('#icon-instruction').html('');});
 

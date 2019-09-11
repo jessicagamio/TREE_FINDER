@@ -7,19 +7,33 @@
              Must fill out all fields. 
     </div>
 </div>
+
 <h1>Register </h1>
-<div>
+<div id="register-form">
+
 <form action="/process_register" method="POST" id="register_form">
-    <label> User Name <input type="text" name="username" id="username" required></label>
+    <div class="form-group">
+    <label> User Name 
     <br>
-    <label> First Name <input type="text" name="firstname" id="firstname" required></label>
+    <input type="text" name="username" id="username" class="form-control" aria-describedby="emailHelp" placeholder="Enter Username" required></label>
     <br>
-    <label> Last Name <input type="text" name="lastname" id="lastname" required></label>
+    <label> First Name 
     <br>
-    <label> Password <input type="text" name="password" id="password" required></label>
+    <input type="text" name="firstname" id="firstname" required></label>
+    <br>
+    <label> Last Name 
+    <br>
+    <input type="text" name="lastname" id="lastname" required></label>
+    <br>
+    <label> Password 
+    <br>
+    <input type="text" name="password" id="password" required></label>
+    <br>
     <br>
     <input type="submit" value="submit" id="register_submit">
+    </div>
 </form>
+
 
 </div>
 <script> 
