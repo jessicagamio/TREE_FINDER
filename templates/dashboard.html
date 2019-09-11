@@ -25,11 +25,8 @@
         <div id="hug"> 
 
             {% for hugs in tree_hugs %}
-                {% if loop.index % 3 == 0 %}
-                    <br>
-               {% endif %}
                 {% if hugs == "Platanus x hispanica" %}
-                    <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}" style="background-image:static/img/platanus_x_hispanica.jpg; height:200px ; width:200px">{{hugs}}
+                    <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}" style="background-image: url('/static/img/platanus_x_hispanica.jpg'); height:200px ; width:200px; background-size:cover">{{hugs}}
                     </div>
                 {% else %}
                   <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}">{{hugs}}
