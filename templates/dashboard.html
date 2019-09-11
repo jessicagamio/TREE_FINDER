@@ -2,32 +2,58 @@
 
 {% block content %}
 
-<h1>{{username}}'s Dashboard</h1>
 
-
-<h2>Tree hugs</h2>
-
-
-<div id="hug" class="board"> 
-
-    {% for hugs in tree_hugs %}
-   
-        <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}">{{hugs}}</div>
-       
-    {% endfor %}
+<!-- <div style="background-image: url(static/img/cover.jpg); no-repeat center center; background-size: cover"> -->
+<div>
+<div class="container">
+<div class="row">
+    <div class="col">
+    <h1>{{username}}'s Dashboard</h1>
+    </div>
+</div>
+<div class="row" id="hug-and-info-row">
+    <div class="col-6">
+        <h2 class="treedash-title">Tree hugs</h2>
+    </div>
+    <div class="col-6" >
+        <h2 class="treedash-title">Tree Information</h2>
+    </div>
 
 </div>
+<div class="row align-content-center">
+    <div class="col">
+        <div id="hug"> 
 
-<div id="information">
-<h2>Tree Information</h2>
-    <p id="dashInfo"></p>
+            {% for hugs in tree_hugs %}
+                {% if loop.index % 3 == 0 %}
+                    <br>
+               {% endif %}
+                {% if hugs == "Platanus x hispanica" %}
+                    <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}" style="background-image:static/img/platanus_x_hispanica.jpg; height:200px ; width:200px">{{hugs}}
+                    </div>
+                {% else %}
+                  <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}">{{hugs}}
+                    </div>
+               {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="col" id="information-row">
+        <div id="information">
+            
+            <p id="dashInfo"></p>
+        </div>
+    </div>
+</div>
+</div>
 </div>
 <script>
 
     function updateDash(response) {
         const status = response;
         // console.log(status);
-        $('#dashInfo').html(status.common_name);  
+        $('#dashInfo').html(`<h4><b>${status.common_name}</b></h4><h5>${status.sci_name}</h5><br> ${status.tree_facts}`);
     }
 
    function getTreeInfo(evt){

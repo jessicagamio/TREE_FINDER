@@ -46,8 +46,11 @@
   height: 200px;
   border: solid;
   color: grey;
-  padding:50px;
+  padding:0px;
   margin:25px;
+  text-align: center;
+  display:inline-block;
+
 }
 
 #homepage{
@@ -86,6 +89,7 @@
 #leaf{
   fill:white;
 }
+
 #icon-instruction{
   /* icon explanation */
   height:50px;
@@ -163,18 +167,29 @@
   padding:25px;
 }
 
+#hug-and-info-row{
+  padding:25px;
+}
 
+#information-row{
+  margin-top: 25px;
+}
+.treedash-title{
+  text-align: center;
+}
+
+#hug{
+  color:grey;
+  border : 5px;
+  border-color: grey;
+  border-width: 5px;
+ /* background-color: grey;
+  opacity:.4;*/
+  margin-left:0px;
+}
 /*#map-result{
   vertical-align: center;
   align-content: center;
 
 }*/
 
-
-/*.board{
-  width: 600px;
-  height: 600px;
-  border: solid;
-  color: grey;
-}*/
-/* ... */
