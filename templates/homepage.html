@@ -3,9 +3,9 @@
 {% block content %}
 
 <div class="container" id="homepage">
-<!-- <video autoplay muted loop id="siteVideo">
+<video autoplay muted loop id="siteVideo">
   <source src="static/img/coverr-sunrise-1563948708950.mp4" type="video/mp4">
-</video> -->
+</video>
 
   <div class="row">
     <!-- Blank space -->
@@ -14,20 +14,20 @@
   </div>
 
   <div class="row" id="frontpage-icons">
-    <!-- Explanation -->
-      <div class="col-2" id="icon-leaf">
-        <img src="static/img/leaf_icon.png" width="50px" height="50px" id="leaf">
+
+      <div class="col-2" id="icon-leaf" style="text-shadow: 2px 2px 10px black">
+        <img src="static/img/leaf_icon.png" width="50px" height="50px" id="leaf" style="text-shadow: 2px 2px 10px black">
         Spot
       </div>
-      <div class="col-2" id="icon-camera">
-        <img src="static/img/camera.svg" width="50px" height="50px" id="camera">
+      <div class="col-2" id="icon-camera" style="text-shadow: 2px 2px 10px black">
+        <img src="static/img/camera.svg" width="50px" height="50px" id="camera" style="text-shadow: 2px 2px 10px black">
         Snap
       </div>
-      <div class="col-2" id="icon-processing">
+      <div class="col-2" id="icon-processing" style="text-shadow: 2px 2px 10px black">
         <img src="static/img/send-icon.svg" width="50px" height="50px" id="camera">
         Send
       </div>
-      <div class="col-2" id="icon-tree">
+      <div class="col-2" id="icon-tree" style="text-shadow: 2px 2px 10px black">
         <img src="static/img/tree-icon.svg" width="50px" height="50px" id="tree">
         Learn
       </div>
@@ -56,16 +56,18 @@
         </div> -->
 
 
-        <div id ="dropzone" class="col align-center-self">
-    <!--     <div id ="dropzone" class="col-md-4 align-center-self"> -->
+        <div id ="dropzone" class="col align-center-self" style="background-color: rgba(163,163,163,.4)">
+
             <p id ="dropImageTag">Drop image here</p>
                   <div id="spin" style="display:none" >
                   <div class="spinner-border text-success" role="status" style= "width: 5rem; height: 5rem;">
+
                     <span class="sr-only">Loading...</span>
+                    
                   </div>
                   </div>
         </div>
-   <!--    </div> -->
+
 </div>
 <div class="row">
         <div class="col align-center-self" id="upload">
