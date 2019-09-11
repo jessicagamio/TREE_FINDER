@@ -1,16 +1,31 @@
+#siteVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+
 #dropzone {
     border : 5px dashed lightgrey;
     border-width: 5px;
     width: 200px;
     height: 200px;
-    text-align: center;
-    vertical-align:middle;
-    padding: 20px;
-/*    margin-top: 100px;
-    margin-left: auto;
-    margin-right: auto;*/
+    text-align: center; 
+    margin-left: 300px;
+    margin-right: 300px;
 
 }
+#upload{
+  margin-top:15px;
+}
+
+#img_submit{
+  margin:10px;
+}
+
 
 
 #map {
@@ -43,10 +58,10 @@
 #blank-space{
   /* blank top space on homepage*/
   height: 200px;
-  color:grey;
+  /*color:grey;*/
   margin-left:25px;
   margin-right: 25px;
-  background-color: lightgrey;
+  /*background-color: lightgrey;*/
 }
 
 #frontpage-icons{
@@ -58,26 +73,30 @@
 .col-2{
   /* row for icons */
   height:45px;
-  background-color: lightgrey;
+  /*background-color: lightgrey;*/
   margin-left:auto;
   margin-right:auto;
   margin-top: 15px;
   margin-bottom:15px;
   vertical-align:middle;
   text-align:center;
+  color:white;
 }
 
-
+#leaf{
+  fill:white;
+}
 #icon-instruction{
   /* icon explanation */
   height:50px;
-  background-color: lightgrey;
+  /*background-color: lightgrey;*/
   margin-left:25px;
   margin-right:25px;
   margin-top: 0px;
   margin-bottom:15px;
   text-align: center;
   vertical-align: middle;
+  color:white;
 }
 
 #loading-zone{
@@ -86,13 +105,13 @@
   background-color: lightgrey;
   margin-left:25px;
   margin-right:25px;
-  align-content: center;
+/*  align-content: center;*/
 }
 
 
 #footer{
   height:50px;
-  background-color: lightgrey;
+  /*background-color: lightgrey;*/
   margin-left:25px;
   margin-right:25px;
   margin-top: 15px;
@@ -137,6 +156,11 @@
   font-weight: bold;
   margin:auto;
   padding:auto;
+}
+
+
+#register-form{
+  padding:25px;
 }
 
 
