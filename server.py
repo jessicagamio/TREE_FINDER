@@ -34,6 +34,7 @@ def index():
 def process_login():
     """log into dash"""
 
+    print("=================>\n \n\n\n\n\nI'm in")
     user_name=request.form['username']
     password=request.form['password']
 
@@ -48,8 +49,8 @@ def process_login():
 
         flash(f'{user_name} is logged in.')
 
-        # return render_template("dashboard.html", username=user_name)
         return redirect('/')
+
 
     else:
         flash('Not a valid username or password')
