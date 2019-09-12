@@ -147,7 +147,7 @@
 #prediction-first-row{
  /* height:100px;*/
   max-height: 100%;
-  margin-top:25px;
+  margin-top:0px;
   margin-bottom:25px;
   margin-left: 25px;
   margin-right:25px;
@@ -218,11 +218,6 @@
   color:white;
 }
 
-#prediction{
-  background-image: url(static/img/leaves_background.jpg) no-repeat center center;
-  background-size:cover;
- 
-}
 
 #map-modal{
   vertical-align: center;
