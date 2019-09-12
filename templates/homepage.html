@@ -13,28 +13,28 @@
       </div>
   </div>
 
-  <div class="row" id="frontpage-icons">
+  <div class="row" id="frontpage-icons" style="background-color: rgba(163,163,163,.4)">
 
-      <div class="col-2" id="icon-leaf" style="text-shadow: 2px 2px 10px black">
+      <div class="col-3" id="icon-leaf" style="text-shadow: 2px 2px 10px black; background-color: rgba(163,163,163,.4); text-stroke-width:2px">
         <img src="static/img/leaf_icon.png" width="50px" height="50px" id="leaf" style="text-shadow: 2px 2px 10px black">
         Spot
       </div>
-      <div class="col-2" id="icon-camera" style="text-shadow: 2px 2px 10px black">
+      <div class="col-3" id="icon-camera" style="text-shadow: 2px 2px 10px black; background-color: rgba(163,163,163,.4)">
         <img src="static/img/camera.svg" width="50px" height="50px" id="camera" style="text-shadow: 2px 2px 10px black">
         Snap
       </div>
-      <div class="col-2" id="icon-processing" style="text-shadow: 2px 2px 10px black">
+      <div class="col-3" id="icon-processing" style="text-shadow: 2px 2px 10px black; background-color: rgba(163,163,163,.4)">
         <img src="static/img/send-icon.svg" width="50px" height="50px" id="camera">
         Send
       </div>
-      <div class="col-2" id="icon-tree" style="text-shadow: 2px 2px 10px black">
+      <div class="col-3" id="icon-tree" style="text-shadow: 2px 2px 10px black; background-color: rgba(163,163,163,.4)">
         <img src="static/img/tree-icon.svg" width="50px" height="50px" id="tree">
         Learn
       </div>
   </div>
 
 <div class="row">
-    <div class="col" id="icon-instruction">
+    <div class="col" id="icon-instruction" style="background-color: rgba(163,163,163,.4);text-shadow: 2px 2px 10px black; background-color: rgba(163,163,163,.4)">
     </div>
 </div>
 
@@ -56,11 +56,11 @@
         </div> -->
 
 
-        <div id ="dropzone" class="col align-center-self" style="background-color: rgba(163,163,163,.4)">
+        <div id ="dropzone" class="col align-center-self" style="background-color: rgba(163,163,163,.4)" height=200px width=200px>
 
-            <p id ="dropImageTag">Drop image here</p>
+            <p id ="dropImageTag" style="display:inline">Drop image here</p>
                   <div id="spin" style="display:none" >
-                  <div class="spinner-border text-success" role="status" style= "width: 5rem; height: 5rem;">
+                  <div class="spinner-border text-light" role="status" style= "width: 5rem; height: 5rem;">
 
                     <span class="sr-only">Loading...</span>
                     
@@ -92,20 +92,20 @@
 <script>
 
 //Instructions Pick a Leaf
-$('#icon-leaf').mouseenter(()=>{$('#icon-instruction').html('Pluck a leave from a tree you curious to learn more about.');});
+$('#icon-leaf').mouseenter(()=>{$('#icon-instruction').html('Spot a leave.');});
 $('#icon-leaf').mouseleave(()=>{$('#icon-instruction').html('');});
 
 //Instructions Center Leaf in camera
-$('#icon-camera').mouseenter(()=>{$('#icon-instruction').html('Take a picture. For best results take a single leaf and in frame. Avoid foilage in background and strong shadows.');});
+$('#icon-camera').mouseenter(()=>{$('#icon-instruction').html('Take a picture of a single leaf.');});
 
 $('#icon-camera').mouseleave(()=>{$('#icon-instruction').html('');});
 
 //Instructions Upload
-$('#icon-processing').mouseenter(()=>{$('#icon-instruction').html('Upload your image and let the magic happen.');});
-$('#icon-processing').mouseleave(()=>{$('#icon-instruction').html('Upload your image and let the magic happen.');});
+$('#icon-processing').mouseenter(()=>{$('#icon-instruction').html('Upload your image to Tree Finder.');});
+$('#icon-processing').mouseleave(()=>{$('#icon-instruction').html('');});
 
 //Instructions Get a result
-$('#icon-tree').mouseenter(()=>{$('#icon-instruction').html('Find your tree and Save it for later.');});
+$('#icon-tree').mouseenter(()=>{$('#icon-instruction').html('Find your tree.');});
 $('#icon-tree').mouseleave(()=>{$('#icon-instruction').html('');});
 
 // $('#icon-tree').html('<p>Get an answer!</p>')

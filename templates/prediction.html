@@ -2,10 +2,9 @@
 
 
 {% block content %}
+<div style="background-image: url(/static/img/leaves_background.jpg); no-repeat center center; background-size: cover; z-index:100">
 
-<div class="container">
-
-
+<div class="container"> 
 
    {% if value >= 10 %}
         <div class="row" id="prediction-first-row">
@@ -14,7 +13,7 @@
             </div>
 
 
-            <div class="col" id="result-facts">
+            <div class="col" id="result-facts" style="background-color: rgba(163,163,163,.6); text-shadow: 2px 2px 10px black">
 
                   <!--   {% if value >= 10 %} -->
 
@@ -32,19 +31,33 @@
                         <br>
                         <button  data-sci-name= "{{sci_name}}" type="button" class="btn btn-success" id="treehugs">Hugs</button>
                         </p>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                        Open Map
+                        </button>
                     </div>
             </div>
         </div>
-          <!--   </div> -->
-    <div class="row" id="prediction-second-row">
-        <!-- <div class="col-2"></div> -->
-            <div class="col-8" id="map-result">
-                <h1>{{common_name}} found in San Francisco</h1>
-                <div id="map"></div>
-            </div>
-        <!-- <div class="col-2"></div> -->
-      
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{common_name}} found in San Francisco</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="map-modal">
+                <div id="map"></div>  
+                <br>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="align-content:right">Close</button>
+      </div>
+      </div>
     </div>
+  </div>
+<!-- </div> -->
+
 <script>
 
 
@@ -137,7 +150,7 @@
     <div class="row">
         <div class="col" >
             <div id="no-match-found">
-                <h1>No match found.</h1>
+                <h1 style="text-shadow: 2px 2px 10px black; color:white">No match found.</h1>
             </div>
         </div>
     </div>
@@ -145,4 +158,6 @@
 
 
 </div>
+</div>
+
 {% endblock %}

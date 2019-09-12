@@ -12,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="topbar">
   <a class="navbar-brand" href="/">Tree Finder SF</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -56,7 +56,7 @@
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" role="document">
 <div class="modal-content">
-<div class="modal-header">
+<div class="modal-header" style="background-color: rgba(163,163,163,.4)">
     <h5 class="modal-title" id="exampleModalCenterTitle">Login</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
@@ -80,7 +80,7 @@
             <br>
             <input type="password" name="password" id="password" required></label>
             <br>
-            <input type="submit"  value="submit" id="login_submit" class="btn btn-light">
+            <input type="submit"  value="submit" id="login_submit" class="btn btn-secondary">
         </form>
           <p>
             New User?
@@ -96,6 +96,8 @@
 </div>
 
 <script> 
+
+
 function showLogOut(){
     const logOut= document.querySelector('#logout-button');
     logOut.style.display='block';
@@ -116,6 +118,7 @@ function logInputs(){
     }
 
 $('#login_submit').on('click', logInputs);
+
 
 </script>
 

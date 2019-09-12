@@ -3,31 +3,48 @@
 {% block content %}
 
 
-<!-- <div style="background-image: url(static/img/cover.jpg); no-repeat center center; background-size: cover"> -->
-<div>
+<div style="background-image: url(static/img/leaves_background.jpg); no-repeat center center; background-size: cover; z-index:100;">
+
 <div class="container">
 <div class="row">
-    <div class="col">
+    <div class="col" style="color:white; text-shadow: 2px 2px 10px black">
     <h1>{{username}}'s Dashboard</h1>
     </div>
 </div>
 <div class="row" id="hug-and-info-row">
-    <div class="col-6">
-        <h2 class="treedash-title">Tree hugs</h2>
+    <div class="col-6" >
+        <h2 class="treedash-title" style="text-shadow: 2px 2px 10px black">Tree Hug Collection </h2>
     </div>
     <div class="col-6" >
-        <h2 class="treedash-title">Tree Information</h2>
     </div>
 
 </div>
 <div class="row align-content-center">
     <div class="col">
-        <div id="hug"> 
+        <div id="hug" style="background-color: rgba(163,163,163,.6)"> 
 
             {% for hugs in tree_hugs %}
                 {% if hugs == "Platanus x hispanica" %}
-                    <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}" style="background-image: url('/static/img/platanus_x_hispanica.jpg'); height:200px ; width:200px; background-size:cover">{{hugs}}
+                    <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}" style="background-image: url('/static/img/platanus_leaf.jpg'); height:200px ; width:200px; background-size:cover">{{hugs}}
                     </div>
+            {% elif hugs == "Magnolia grandiflora" %}
+                    <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}" style="background-image: url('/static/img/magnolia_leaf.jpg'); height:200px ; width:200px; background-size:cover">{{hugs}}
+                    </div>
+
+            {% elif hugs == "Prunus cerasifera" %}
+                    <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}" style="background-image: url('/static/img/plum_leaf.jpg'); height:200px ; width:200px; background-size:cover">{{hugs}}
+                    </div>
+             {% elif hugs == "Tristaniopsis laurina" %}
+                    <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}" style="background-image: url('/static/img/tristania_leaf.jpg'); height:200px ; width:200px; background-size:cover">{{hugs}}
+                    </div>
+
+            {% elif hugs == "Ginkgo biloba" %}
+                    <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}" style="background-image: url('/static/img/gingko_leaf.jpg'); height:200px ; width:200px; background-size:cover">{{hugs}}
+                    </div>
+
+
+
+
                 {% else %}
                   <div id ="{{loop.index}}" class="hug-boxes" data-sci-name="{{hugs}}">{{hugs}}
                     </div>
@@ -37,7 +54,7 @@
         </div>
     </div>
     <div class="col" id="information-row">
-        <div id="information">
+        <div id="information"style="background-color: rgba(163,163,163,.6); text-shadow: 2px 2px 10px black">
             
             <p id="dashInfo"></p>
         </div>
@@ -61,7 +78,8 @@
         $.get('/dashinfo',{'getInfo':sci_name},updateDash);
      }
         
-    $('.hug-boxes').on('click',getTreeInfo);
+     $('.hug-boxes').on('click',getTreeInfo);
     
+
 </script>
 {%  endblock %}
