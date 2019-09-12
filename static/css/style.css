@@ -6,8 +6,9 @@
   left:0;
   width:100%;
   height:auto;
-/*  min-width: 100%;
-  min-height: 100%;*/
+
+  min-height: 100%;
+  min-width: 1024px;
 }
 
 #topbar{
@@ -25,6 +26,9 @@
     text-align: center; 
     margin-left: 300px;
     margin-right: 300px;
+    vertical-align: center;
+    padding-top: 80px;
+    font-size: large;
 
 }
 
@@ -46,14 +50,15 @@
 
 
 #map {
-  width: 900px;
-  height: 500px;
+  width: 600px;
+  height: 400px;
   margin: 0;
   padding: 0;    
 }
 
 .title{
-    color:black;
+    color:white;
+
 }
 
 
@@ -77,30 +82,28 @@
 
 #blank-space{
   /* blank top space on homepage*/
-  height: 150px;
+  height: 100px;
   /*color:grey;*/
   margin-left:25px;
   margin-right: 25px;
   /*background-color: lightgrey;*/
 }
 
-#frontpage-icons{
-  align-items: center;
-  padding:auto;
-  margin-left:50px;
-  margin-right:50px;
-}
-.col-2{
+
+.col-3{
   /* row for icons */
-  height:45px;
+  height:80px;
   /*background-color: lightgrey;*/
-  margin-left:auto;
-  margin-right:auto;
+/*  margin-left:auto;
+  margin-right:auto;*/
   margin-top: 15px;
-  margin-bottom:15px;
+  margin-bottom:0px;
   vertical-align:middle;
   text-align:center;
   color:white;
+  padding:10px;
+  font-size: xx-large;
+
 }
 
 #leaf{
@@ -110,14 +113,16 @@
 #icon-instruction{
   /* icon explanation */
   height:50px;
-  /*background-color: lightgrey;*/
-  margin-left:25px;
-  margin-right:25px;
+/*  margin-left:25px;
+  margin-right:25px;*/
   margin-top: 0px;
-  margin-bottom:15px;
+  margin-bottom:50px;
   text-align: center;
   vertical-align: middle;
   color:white;
+  padding-top: 0px;
+  font-size: x-large;
+
 }
 
 #loading-zone{
@@ -141,10 +146,12 @@
 
 #prediction-first-row{
  /* height:100px;*/
+  max-height: 100%;
   margin-top:25px;
   margin-bottom:25px;
   margin-left: 25px;
   margin-right:25px;
+  padding-top: 25px;
   align-content: center;
 }
 
@@ -157,6 +164,10 @@
   border-radius: 8px;
 }
 
+#result-facts{
+  color:white;
+  font-size: large;
+}
 
 
 #prediction-second-row{
@@ -170,10 +181,10 @@
 
 #no-match-found{
   width: 800px;
-  height:400px;
+  height:960px;
   vertical-align: center;
   text-align: center;
-  color:red;
+  color:white;
   font-weight: bold;
   margin:auto;
   padding:auto;
@@ -185,25 +196,44 @@
 }
 
 #hug-and-info-row{
-  padding:25px;
+  padding:opx;
 }
 
 #information-row{
-  margin-top: 25px;
+  margin-top: 0px;
 }
 .treedash-title{
   text-align: center;
 }
 
 #hug{
-  color:grey;
+  color:white;
   border : 5px;
   border-color: grey;
   border-width: 5px;
- /* background-color: grey;
-  opacity:.4;*/
-  margin-left:0px;
+  margin-left:30px;
 }
+
+#dashInfo{
+  color:white;
+}
+
+#prediction{
+  background-image: url(static/img/leaves_background.jpg) no-repeat center center;
+  background-size:cover;
+ 
+}
+
+#map-modal{
+  vertical-align: center;
+  text-align: right;
+  align-items: center;
+  align-content: center;
+  margin-left: 80px;
+}
+
+
+
 /*#map-result{
   vertical-align: center;
   align-content: center;

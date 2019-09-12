@@ -2,7 +2,9 @@
 
 function showSpinner () {
   const spinner = document.querySelector('#spin');
+  const droptag=document.querySelector('#dropImageTag');
   spinner.style.display= 'inline-block';
+  droptag.style.display= 'none';
 }
 
 function hideSpinner () {
