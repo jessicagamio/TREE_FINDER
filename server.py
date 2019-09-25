@@ -15,7 +15,7 @@ FLASK_TOKEN = os.environ.get('FLASK_TOKEN')
 app.secret_key=FLASK_TOKEN
 app.jinja_env.undefined = StrictUndefined
 # app.config['UPLOAD_FOLDER'] = 'static/img/uploads'
-app.config['UPLOAD_FOLDER'] = '/home/vagrant/src/TREE_FINDER/static/img/uploads'
+app.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_TOKEN')
 
 
 def allowed_file(filename):
