@@ -14,7 +14,6 @@ app = Flask(__name__)
 FLASK_TOKEN = os.environ.get('FLASK_TOKEN')
 app.secret_key=FLASK_TOKEN
 app.jinja_env.undefined = StrictUndefined
-# app.config['UPLOAD_FOLDER'] = 'static/img/uploads'
 app.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_TOKEN')
 
 
