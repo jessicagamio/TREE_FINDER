@@ -13,20 +13,20 @@
 ### Upload a leaf image. Avoid pictures with multiple leaves and foilage in background for best results. 
 
 
-![alt text](https://github.com/jessicagamio/TREE-FINDER/static/img/frontPage.jpg "Front Page")
+![alt text](https://github.com/jessicagamio/TREE_FINDER/static/img/frontPage.JPG "Front Page")
 
 
 ## Get a Prediction
 ### A prediction will come back with the tree most likely to match your leaf image based on the dataset currently available.
 
 
-![alt text](https://github.com/jessicagamio/TREE-FINDER/static/img/prediction.jpg "Prediction")
+![alt text](https://github.com/jessicagamio/TREE_FINDER/static/img/prediction.JPG "Prediction")
 
 
 ## Tree Hug
 ### Registered users can Hug a tree in their predictions page and store it for future reference in their Dashboard.
 
  
-![alt text](https://github.com/jessicagamio/TREE-FINDER/static/img/dashboard.jpg "Dashboard")
+![alt text](https://github.com/jessicagamio/TREE_FINDER/static/img/dashboard.JPG "Dashboard")
 
 
