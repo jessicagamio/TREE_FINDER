@@ -29,7 +29,7 @@ Get a Prediction
 A prediction will come back with the tree most likely to match your leaf image based on the dataset currently available.
 
 
-![alt text](https://github.com/jessicagamio/TREE_FINDER/static/img/prediction_png.png "Prediction")
+![alt text](https://github.com/jessicagamio/TREE_FINDER/static/img/dashboard_png.png "Prediction")
 
 
 Tree Hug
