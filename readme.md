@@ -31,8 +31,13 @@ Get a Prediction:
 
 A prediction will come back with the tree most likely to match your leaf image based on the dataset currently available.
 
-
 ![alt text](/static/img/prediction_png.png "Prediction")
+
+Find your Tree:
+
+View all the location your predicted tree can be found in San Francisco.
+
+![alt text](/static/img/map_png.png "Locations")
 
 
 Tree Hugs:
