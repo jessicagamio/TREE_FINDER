@@ -32,7 +32,7 @@ Get a Prediction:
 A prediction will come back with the tree most likely to match your leaf image based on the dataset currently available.
 
 
-![alt text](/static/img/dashboard_png.png "Prediction")
+![alt text](/static/img/prediction_png.png "Prediction")
 
 
 Tree Hugs:
