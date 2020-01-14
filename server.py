@@ -33,14 +33,12 @@ def index():
 def process_login():
     """log into dash"""
 
-    print("=================>\n \n\n\n\n\nI'm in")
     user_name=request.form['username']
     password=request.form['password']
 
     entered_username=User.query.filter(User.username==user_name).count()
-    print('===============> usercount: ',entered_username)
     entered_password=User.query.filter(User.password==password).count()
-    print('=================> password: ', entered_password)
+    
     if entered_username and entered_password:
         user = User.query.filter(User.username == user_name).first()
         user_id = user.user_id
@@ -72,10 +70,7 @@ def dashboard():
 def dashboard_info():
 
     sci_name=request.args.get('getInfo')
-    print('sci_name-------->',sci_name)
-
-    # user_id=session['user_id']
-
+    
     tree=TreeSpecies.query.filter(TreeSpecies.sci_name==sci_name).first()
 
     hugInfo={'sci_name':tree.sci_name,
@@ -113,7 +108,6 @@ def process_hug():
     user_id=request.form.get('user_id')
     tree_species=request.form.get('tree_species')
 
-    print('=================> userid and tree species',user_id, tree_species)
     tree = TreeSpecies.query.filter(TreeSpecies.sci_name==tree_species).first()
     tree_hug = Hugs(user_id=user_id, tree_species_id = tree.tree_species_id)
     db.session.add(tree_hug)
@@ -140,7 +134,6 @@ def process_registration():
         db.session.add(new_user)
         db.session.commit()
         new_guy=User.query.filter(User.username==user_name).first()
-        print("========  new user added ========>",new_guy.username)
         return redirect('/')
 
 
@@ -198,7 +191,6 @@ def upload_image():
 
             markers=TreeSpecies.query.filter(TreeSpecies.sci_name==sci_name).first()
 
-            print('========== markers  ===========>>>>',markers)
             for marker in markers.trees:
                 tree_markers.append((marker.lat, marker.lon))
 
