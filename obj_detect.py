@@ -8,12 +8,11 @@ CLARIFAI_TOKEN= os.environ.get('CLARIFAI_TOKEN')
 app = ClarifaiApp(api_key=CLARIFAI_TOKEN)
 
 
-# app.concepts.update(concept_id='serrated_abst', concept_name='concepts')
-# app.concepts.update(concept_id='smooth_abst', concept_name='concepts')
-
 def create_concepts(tree):
     """Create concepts for each tree species"""
+
     tree = tree
+
     # Create Concept for tree_species
     images=[]
 
@@ -27,7 +26,7 @@ def create_concepts(tree):
 def create_model():
     """Create Model"""
 
-    #Create model and add chosen concepts to model
+    # Create model and add chosen concepts to model
     model=app.models.create('model_id_1', model_name='detect_tree', concepts=['platanus', 'prunus','magnolia','tristan','gingko'])
 
     # train the model
@@ -48,13 +47,7 @@ def predict_model(user_image):
 
     model = app.models.get('detect_tree')
 
-    print('model===============>', model)
-    print('===========>',type(user_image), user_image)
-
     prediction = model.predict_by_filename(user_image)
-    
-    print('=====prediction===>', prediction)
-    print()
     
     for predict in prediction['outputs']:
         result = predict['data']['concepts']
@@ -68,6 +61,7 @@ def predict_model(user_image):
 
         if value < .1:  # if value is less than 10 percent exclude
             continue
+
         else:   # includes predictions 10 percent or over
             value = (answer['value']) * 100
             value = round(value)
