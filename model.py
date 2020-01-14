@@ -5,7 +5,7 @@ db = SQLAlchemy()
 
 def connect_to_db(app,dbname='trees'):
     """Connect to database"""
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///testdb'
+
     app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql:///{dbname}'
     app.config['SQLALCHEMY_ECHO'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -17,8 +17,6 @@ def connect_to_db(app,dbname='trees'):
 
 
 if __name__ == '__main__':
-    # from flask import Flask
-    # app = Flask(__name__)
 
     from server import app
     connect_to_db(app)
@@ -111,15 +109,3 @@ def example_data():
     db.session.add(Arwen)
     db.session.commit()
 
-# class Plant(db.Model):
-#     """ Plant a tree"""
-
-#     __tablename__="plant"
-
-#     plant_id = db.column(db.Integer, primary_key=True,autoincrement=True)
-#     user_id = db.column(db.Integer,
-#                             db.ForeignKey('user.user_id'))
-#     latitude=db.column(db.Float, nullable=False)
-#     longitude=db.column(db.Float, nullable=False)
-#     tree_species_id=db.Column(db.Integer, 
-#                                 db.ForeignKey('tree_species.tree_species_id'))
