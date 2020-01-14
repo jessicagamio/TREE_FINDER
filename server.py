@@ -156,7 +156,6 @@ def upload_image():
         image = request.form.get('file') 
 
 ###############################################
-    # image = request.files['upload']
 
     if image.filename == '':
         flash('No File Selected')
