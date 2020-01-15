@@ -12,7 +12,7 @@
       <div class="col" id="blank-space">
       </div>
   </div>
-
+  <!-- page instructional icons -->
   <div class="row" id="frontpage-icons" style="background-color: rgba(163,163,163,.4)">
 
       <div class="col-3" id="icon-leaf" style="text-shadow: 2px 2px 10px black; background-color: rgba(163,163,163,.4); text-stroke-width:2px">
@@ -41,20 +41,12 @@
 
 <div class="row">
     <!-- Loading Area -->
-      <!-- <div id="loading-zone" > -->
      
         <div id="flash" style="display:none">
            <div class="alert alert-primary" role="alert">
               No file selected 
           </div>
         </div>
-
-     <!--    <div id="spin" style="display:none">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div> -->
-
 
         <div id ="dropzone" class="col align-center-self" style="background-color: rgba(163,163,163,.4)" height=200px width=200px>
 
@@ -69,6 +61,7 @@
         </div>
 
 </div>
+<!-- Upload image  -->
 <div class="row">
         <div class="col align-center-self" id="upload">
             <form id="image-form" action="/upload" method="POST" enctype="multipart/form-data">
@@ -108,7 +101,6 @@ $('#icon-processing').mouseleave(()=>{$('#icon-instruction').html('');});
 $('#icon-tree').mouseenter(()=>{$('#icon-instruction').html('Find your tree.');});
 $('#icon-tree').mouseleave(()=>{$('#icon-instruction').html('');});
 
-// $('#icon-tree').html('<p>Get an answer!</p>')
 
 </script>
 
@@ -124,7 +116,6 @@ function dropHandler(evt) {
   console.log('evt....',evt);
 
   //set dataTransfer to browsers unmodified native event object
-  // fixes console evt.dataTransfer undefined error
   evt.dataTransfer = evt.originalEvent.dataTransfer;
 
   const files = evt.dataTransfer.files;
@@ -140,7 +131,7 @@ function dropHandler(evt) {
     console.log('file IN DROPZONE')
     // prevents default browser dragging
     evt.preventDefault();
-    // evt.stopPropagation();
+    
   }
 
   $('#dropzone').on('drop', dropHandler);
